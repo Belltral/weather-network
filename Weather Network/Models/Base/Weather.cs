@@ -1,6 +1,6 @@
-﻿namespace Weather_Network.Models;
+﻿namespace WeatherNetwork.Models.Base;
 
-public class WeatherViewModel
+public class Weather
 {
     public double Latitude { get; set; }
     public double Longitude { get; set; }
@@ -10,12 +10,12 @@ public class WeatherViewModel
     public string? TimezoneAbbreviation { get; set; }
     public double Elevation { get; set; }
 
-    public Dictionary<string, string>? CurrentUnits { get; set; }  
-    public CurrentWeatherViewModel? Current { get; set; }
+    public Dictionary<string, string>? CurrentUnits { get; set; }
+    public CurrentWeather? Current { get; set; }
 
     public Dictionary<string, string>? HourlyUnits { get; set; }
-    public HourlyWeatherViewModel? Hourly { get; set; }
+    public HourlyWeather? Hourly { get; set; }
 
     public Dictionary<string, string>? DailyUnits { get; set; }
-    public DailyWeatherViewModel? Daily { get; set; }
+    public DailyWeather? Daily { get; set; }
 }

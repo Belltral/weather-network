@@ -1,4 +1,4 @@
-namespace Weather_Network.Models
+namespace WeatherNetwork.Models
 {
     public class ErrorViewModel
     {

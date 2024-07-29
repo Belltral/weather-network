@@ -1,11 +1,13 @@
-﻿namespace Weather_Network.Models;
+﻿namespace WeatherNetwork.Models;
 
 public class HourlyWeatherViewModel
 {
-    public List<string>? Time { get; set; }
-    public List<double>? Temperature2m { get; set; }
-    public List<int>? RelativeHumidity2m { get; set; }
-    public List<int>? PrecipitationProbability { get; set; }
-    public List<double>? WindSpeed80m { get; set; }
-    public List<int>? WindDirection80m { get; set; }
+    public IList<DateTime>? Time { get; set; }
+    public IList<string>? Temperature2m { get; set; }
+    public IList<int>? RelativeHumidity2m { get; set; }
+    public IList<int>? PrecipitationProbability { get; set; }
+    public IList<string>? WeatherCode { get; set; }
+    public IList<string>? WindSpeed80m { get; set; }
+    public IList<int>? WindDirection80m { get; set; }
+    public IList<string>? UvIndex { get; set; }
 }

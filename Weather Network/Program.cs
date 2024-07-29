@@ -1,5 +1,6 @@
-using Weather_Network.Services;
-using Weather_Network.Services.Contracts;
+using WeatherNetwork.Mappings;
+using WeatherNetwork.Services;
+using WeatherNetwork.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,11 +9,17 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient("WeatherApi", opt =>
 {
-    opt.BaseAddress = new Uri(builder.Configuration["ServiceUri:WeatherUri"]);
+    opt.BaseAddress = new Uri(builder.Configuration["ServiceUri:WeatherUri"]!);
 });
 
 builder.Services.AddScoped<IWeatherService, WeatherService>();
-builder.Services.AddScoped<ICurrentWeatherService, CurrentWeatherService>();
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(CurrentWeatherProfile),
+    typeof(HourlyProfile),
+    typeof(DailyProfile),
+    typeof(TodayWeatherProfile)
+    );
 
 var app = builder.Build();
 
@@ -33,6 +40,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}"); //"{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

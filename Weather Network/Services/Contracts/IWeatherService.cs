@@ -1,8 +1,8 @@
-﻿using Weather_Network.Models;
+﻿using WeatherNetwork.Models.Base;
 
-namespace Weather_Network.Services.Contracts;
+namespace WeatherNetwork.Services.Contracts;
 
 public interface IWeatherService
 {
-    public Task<WeatherViewModel?> GetWeather(double latitude, double longitude);
+    public Task<Weather?> GetFullWeather(double latitude, double longitude);
 }

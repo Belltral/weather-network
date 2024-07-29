@@ -1,22 +1,71 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: #0085f0;
+    background: linear-gradient(0deg, #007bdf 0%, #08a2ef 65%);
+}
+
+nav {
+    background-color: #08a2ef;
+}
+
+.flex-column-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 650px;
+    margin-bottom: 15px;
+}
+
+.flex-row-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 290px;
+}
+
+.border {
+    border-radius: 7px;
+    padding: 5px 10px;
+}
+
+.weather-list-properties {
+    min-width: 50%;
+}
+
+.weather-list-item {
+    border-bottom: solid 1px #000000;
+    margin-bottom: 5px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 36px;
+}
+
+.centralize {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

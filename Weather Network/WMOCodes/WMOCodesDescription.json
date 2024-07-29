@@ -1,0 +1,115 @@
+{
+  "ClearSky": {
+    "Value": 0,
+    "pt": "Limpo"
+  },
+  "MainlyClear": {
+    "Value": 1,
+    "pt": "Principalmente limpo"
+  },
+  "PartlyCloudy": {
+    "Value": 2,
+    "pt": "Parcialmente nublado"
+  },
+  "Overcast": {
+    "Value": 3,
+    "pt": "Nublado"
+  },
+  "Fog": {
+    "Value": 45,
+    "pt": "Nevoeiro"
+  },
+  "DepositingRimeFog": {
+    "Value": 48,
+    "pt": "Nevoeiro com gelo depositado"
+  },
+  "LightIntensity": {
+    "Value": 51,
+    "pt": "Intensidade leve"
+  },
+  "ModerateIntensity": {
+    "Value": 53,
+    "pt": "Intensidade moderada"
+  },
+  "DenseIntensity": {
+    "Value": 55,
+    "pt": "Intensidade densa"
+  },
+  "LightDenseIntensity": {
+    "Value": 56,
+    "pt": "Intensidade leve densa"
+  },
+  "DenseIntensity_57": {
+    "Value": 57,
+    "pt": "Intensidade densa"
+  },
+  "SlightIntensity": {
+    "Value": 61,
+    "pt": "Intensidade ligeira"
+  },
+  "ModerateIntensity_63": {
+    "Value": 63,
+    "pt": "Intensidade moderada"
+  },
+  "HeavyIntensity": {
+    "Value": 65,
+    "pt": "Intensidade forte"
+  },
+  "LightHeavyIntensity": {
+    "Value": 66,
+    "pt": "Intensidade leve e forte"
+  },
+  "HeavyIntensity_67": {
+    "Value": 67,
+    "pt": "Intensidade forte"
+  },
+  "SlightIntensity_71": {
+    "Value": 71,
+    "pt": "Intensidade ligeira"
+  },
+  "ModerateIntensity_73": {
+    "Value": 73,
+    "pt": "Intensidade moderada"
+  },
+  "HeavyIntensity_75": {
+    "Value": 75,
+    "pt": "Intensidade forte"
+  },
+  "SnowGrains": {
+    "Value": 77,
+    "pt": "Grãos de neve"
+  },
+  "Slight": {
+    "Value": 80,
+    "pt": "Ligeira"
+  },
+  "Moderate": {
+    "Value": 81,
+    "pt": "Moderada"
+  },
+  "Violent": {
+    "Value": 82,
+    "pt": "Violenta"
+  },
+  "SnowShowersSlight": {
+    "Value": 85,
+    "pt": "Neve leve"
+  },
+  "SnowShowersHeavy": {
+    "Value": 86,
+    "pt": "Neve pesada"
+  },
+  "SlightOrModerate": {
+    "Value": 95,
+    "pt": "Ligeira ou moderada"
+  },
+  "ThunderstormWithSlightHail": {
+    "Value": 96,
+    "pt": "Trovoada com granizo leve"
+  },
+  "ThunderstormWithHeavyHail": {
+    "Value": 99,
+    "pt": "Trovoada com granizo forte"
+  }
+}
+
