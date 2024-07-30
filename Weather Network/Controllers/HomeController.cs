@@ -1,6 +1,8 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.Json;
 using WeatherNetwork.HelperUtils;
 using WeatherNetwork.Models;
 using WeatherNetwork.Models.Base;
@@ -21,19 +23,19 @@ namespace WeatherNetwork.Controllers
             _mapper = mapper;
         }
 
-        private TodayWeatherViewModel MappedWeather(Weather? weather)
+        private TodayWeatherViewModel MappedWeather(Weather? weather, string culture)
         {
             TodayWeatherViewModel todayWeatherVM = new TodayWeatherViewModel();
 
-            var currentWeatherCode = WMOCodeConverter.Converter(weather.Current.WeatherCode, "pt");
-            var dayWeatherCode = WMOCodeConverter.Converter(weather.Daily.WeatherCode[0], "pt");
+            var currentWeatherCode = WMOCodeConverter.Converter(weather.Current.WeatherCode, culture);
+            var dayWeatherCode = WMOCodeConverter.Converter(weather.Daily.WeatherCode[0], culture);
             var hourlyWeatherCode = () =>
             {
                 List<string> descriptions = new List<string>();
 
                 foreach (var item in weather.Hourly.WeatherCode)
                 {
-                    descriptions.Add(WMOCodeConverter.Converter(item, "pt"));
+                    descriptions.Add(WMOCodeConverter.Converter(item, culture));
                 }
                 return descriptions;
             };
@@ -53,14 +55,24 @@ namespace WeatherNetwork.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var weather = await _weatherService.GetFullWeather(0, 0);
-            TodayWeatherViewModel todayWeatherVM = MappedWeather(weather);
+            string? cultureCookie = Request.Cookies["culture"];
+            string culture;
 
-            var languages = Request.GetTypedHeaders()
-                .AcceptLanguage
-                ?.OrderByDescending(x => x.Quality ?? 1)
-                .Select(x => x.Value.ToString())
-                .ToArray() ?? [];
+            if (String.IsNullOrEmpty(cultureCookie))
+            {
+                var requestCulture = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+                culture = requestCulture!.RequestCulture.Culture.ToString();
+                Response.Cookies.Append("culture", culture);
+            }
+
+            culture = cultureCookie!.Substring(0, 2);
+
+            var weather = await _weatherService.GetFullWeather(0, 0);
+
+            if (weather is null)
+                return View("Error");
+
+            TodayWeatherViewModel todayWeatherVM = MappedWeather(weather, culture ?? "pt");
 
             return View(todayWeatherVM);
         }

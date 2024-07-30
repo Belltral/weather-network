@@ -15,6 +15,8 @@ public class DailyProfile : Profile
             .ForMember(dst => dst.Temperature2mMin, opt => opt.MapFrom(src => src.Temperature2mMin.Select(s => s.ToString("F0"))))
             .ForMember(dst => dst.DaylightDuration, opt => opt.MapFrom(src => src.DaylightDuration.Select(s => TimeSpan.FromSeconds(s).Hours)))
             .ForMember(dst => dst.SunshineDuration, opt => opt.MapFrom(src => src.SunshineDuration.Select(s => TimeSpan.FromSeconds(s).Hours)))
+            .ForMember(dst => dst.Sunrise, opt => opt.MapFrom(src => src.Sunrise.Select(s => DateTime.Parse(s).ToString("t"))))
+            .ForMember(dst => dst.Sunset, opt => opt.MapFrom(src => src.Sunset.Select(s => DateTime.Parse(s).ToString("t"))))
             .ForMember(dst => dst.UvIndexMax, opt => opt.MapFrom(src => src.UvIndexMax.Select(s => s.ToString("F0"))))
             .ForMember(dst => dst.PrecipitationSum, opt => opt.MapFrom(src => src.PrecipitationSum.Select(s => s.ToString("F0"))))
             .ForMember(dst => dst.PrecipitationHours, opt => opt.MapFrom(src => src.PrecipitationHours.Select(s => s.ToString("F0"))))
