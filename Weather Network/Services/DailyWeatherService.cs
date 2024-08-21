@@ -8,7 +8,7 @@ namespace WeatherNetwork.Services;
 
 public class DailyWeatherService : IDailyWeatherService
 {
-    private const string dailyWeatherQuery = "&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,sunshine_duration,uv_index_max,precipitation_sum,precipitation_hours,precipitation_probability_max,wind_speed_10m_max,wind_direction_10m_dominant,weather_code";
+    private const string dailyWeatherQuery = "&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,sunshine_duration,uv_index_max,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_direction_10m_dominant,weather_code";
     private const string otherOptionsQuery = "&timezone=auto&forecast_days=15";
     private const string fullDailyQuery = dailyWeatherQuery + otherOptionsQuery;
 

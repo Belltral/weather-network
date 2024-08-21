@@ -31,7 +31,7 @@ namespace WeatherNetwork.Controllers
                 return View("Error");
 
             var dailyWeatherVM = _mapper.Map<DailyWeatherViewModel>(dailyWeather);
-            dailyWeatherVM.WeatherCode = dailyWeather.WeatherCode!.Select(code => WMOCodeConverter.Converter(code, cookies.Language!)).ToList()!;
+            dailyWeatherVM.WeatherCode = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
             return View(dailyWeatherVM);
         }
@@ -54,7 +54,7 @@ namespace WeatherNetwork.Controllers
                 return View("Error");
 
             var dailyWeatherVM = _mapper.Map<DailyWeatherViewModel>(dailyWeather);
-            dailyWeatherVM.WeatherCode = dailyWeather.WeatherCode!.Select(code => WMOCodeConverter.Converter(code, cookies.Language!)).ToList()!;
+            dailyWeatherVM.WeatherCode = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
             return PartialView("_DailyWeatherPartial", dailyWeatherVM);
         }

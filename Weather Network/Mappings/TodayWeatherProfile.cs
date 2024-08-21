@@ -13,6 +13,7 @@ public class TodayWeatherProfile : Profile
             .ForMember(dst => dst.Current, opt => opt.Ignore())
             .ForMember(dst => dst.Hourly, opt => opt.Ignore())
             .ForMember(dst => dst.WeatherCode, opt => opt.Ignore())
+            .ForMember(dst => dst.Daily, opt => opt.Ignore())
 
             .ForMember(dst => dst.Temperature2mMax, opt => opt.MapFrom(src => src.Temperature2mMax.FirstOrDefault().ToString("F0")))
             .ForMember(dst => dst.Temperature2mMin, opt => opt.MapFrom(src => src.Temperature2mMin.FirstOrDefault().ToString("F0")))

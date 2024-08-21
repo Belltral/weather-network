@@ -11,6 +11,7 @@ public class DailyProfile : Profile
         CreateMap<DailyWeather, DailyWeatherViewModel>()
             .ForMember(dst => dst.WeatherCode, opt => opt.Ignore())
 
+            .ForMember(dst => dst.Time, opt => opt.MapFrom(src => src.Time.Select(t => DateTime.Parse(t))))
             .ForMember(dst => dst.Temperature2mMax, opt => opt.MapFrom(src => src.Temperature2mMax.Select(s => s.ToString("F0"))))
             .ForMember(dst => dst.Temperature2mMin, opt => opt.MapFrom(src => src.Temperature2mMin.Select(s => s.ToString("F0"))))
             .ForMember(dst => dst.DaylightDuration, opt => opt.MapFrom(src => src.DaylightDuration.Select(s => TimeSpan.FromSeconds(s).Hours)))

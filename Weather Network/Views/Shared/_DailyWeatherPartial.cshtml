@@ -4,7 +4,7 @@
     @{
         for (int i = 0; i < Model.Time.Count(); i++)
         {
-            var date = DateTime.Parse(Model.Time[i]).ToString("dd/MM");
+            var date = Model.Time[i].ToString("dd/MM");
 
             <div class="border flex-column-container container-info-color">
                 <header>

@@ -172,3 +172,22 @@ function displayHourlyData(hourlyData) {
     weatherInfo.innerHTML = '';
     weatherInfo.innerHTML = hourlyData;
 }
+
+function sendDailyRequest(latitude, longitude) {
+    $.ajax({
+        url: 'https://localhost:7152/Daily',
+        data: {
+            latitude: latitude,
+            longitude: longitude
+        },
+        success: function (dailyData) {
+            displayDailyData(dailyData);
+        }
+    })
+}
+
+function displayDailyData(dailyData) {
+    const weatherInfo = document.getElementById('weather-info');
+    weatherInfo.innerHTML = '';
+    weatherInfo.innerHTML = dailyData;
+}

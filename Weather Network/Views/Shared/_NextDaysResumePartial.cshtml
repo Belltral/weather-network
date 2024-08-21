@@ -1,0 +1,26 @@
+﻿@model DailyWeatherViewModel
+
+<div class="daily-partial-info-container border container-info-color">
+    @for (int i = 1; i <= 5; i++)
+    {
+        var date = Model.Time[i].ToString("dd/MM");
+        var weekDay = Model.Time[i].ToString("ddd");
+
+        <div class="daily-partial-infos">
+            <span>@weekDay</span>
+            <span>@date</span>
+            <img src="" alt="condition-icon" />
+            <span>
+                @Html.DisplayFor(Model => Model.Temperature2mMax[i])° /
+                @Html.DisplayFor(Model => Model.Temperature2mMin[i])°
+            </span>
+            <span>
+                @Html.DisplayFor(Model => Model.PrecipitationProbabilityMax[i])% /
+                @Html.DisplayFor(Model => Model.PrecipitationSum[i])mm
+            </span>
+        </div>
+    }
+    
+    @Html.ActionLink("Próximos dias", "Index", "Daily", null, new { @class = "more-info-button" })
+
+</div>

@@ -71,16 +71,9 @@ namespace WeatherNetwork.Controllers
 
             var currentWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Current.WeatherCode, culture);
             var dayWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Daily.WeatherCode[0], culture);
-            List<string> hourlyWeatherCode()
-            {
-                List<string> descriptions = [];
 
-                foreach (var item in weather.Hourly.WeatherCode)
-                {
-                    descriptions.Add(JsonFileUtils.WMOCodeConverter(item, culture));
-                }
-                return descriptions;
-            }
+            var hourlyWeatherCode = weather.Hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, culture)).ToList();
+            var dailyWeatherCode = weather.Daily.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, culture)).ToList();
 
             todayWeatherVM = _mapper.Map<TodayWeatherViewModel>(weather.Daily);
             todayWeatherVM.WeatherCode = dayWeatherCode;
@@ -89,7 +82,10 @@ namespace WeatherNetwork.Controllers
             todayWeatherVM.Current.WeatherCode = currentWeatherCode;
 
             todayWeatherVM.Hourly = _mapper.Map<HourlyWeatherViewModel>(weather.Hourly);
-            todayWeatherVM.Hourly.WeatherCode = hourlyWeatherCode();
+            todayWeatherVM.Hourly.WeatherCode = hourlyWeatherCode!;
+
+            todayWeatherVM.Daily = _mapper.Map<DailyWeatherViewModel>(weather.Daily);
+            todayWeatherVM.Daily.WeatherCode = dailyWeatherCode!;
 
             return todayWeatherVM;
         }

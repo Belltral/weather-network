@@ -104,6 +104,10 @@ nav {
         font-size: 40px;
     }
 
+    .partial-hourly-info:hover {
+        background-color: #008dff1f;
+    }
+
 .grid-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -201,7 +205,13 @@ nav {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    width: 125px;
+    border: 1px solid #d4d4d4;
+    border-radius: 7px;
+    width: 123px;
     height: 200px;
     font-size: 15px;
 }
+
+    .daily-partial-infos:hover {
+        background-color: #008dff1f;
+    }

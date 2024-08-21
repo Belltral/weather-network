@@ -12,7 +12,6 @@ public class DailyWeather
     public ICollection<double>? SunshineDuration { get; set; }
     public ICollection<double>? UvIndexMax { get; set; }
     public ICollection<double>? PrecipitationSum { get; set; }
-    public ICollection<double>? PrecipitationHours { get; set; }
     public ICollection<int>? PrecipitationProbabilityMax { get; set; }
     public ICollection<double>? WindSpeed10mMax { get; set; }
     public ICollection<int>? WindDirection10mDominant { get; set; }

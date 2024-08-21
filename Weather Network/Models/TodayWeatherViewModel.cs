@@ -4,6 +4,7 @@ public class TodayWeatherViewModel
 {
     public CurrentWeatherViewModel? Current { get; set; }
     public HourlyWeatherViewModel? Hourly { get; set; }
+    public DailyWeatherViewModel? Daily { get; set; }
 
     public string? Time { get; set; }
     public string? WeatherCode { get; set; }
