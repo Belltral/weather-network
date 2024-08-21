@@ -72,9 +72,13 @@ app.UseAuthorization();
 app.UseRequestLocalization();
 
 app.MapControllerRoute(
-    name: "DailyWeather",
-    pattern: "DailyWeather",
+    name: "ByDaily",
+    pattern: "ByDaily",
     defaults: new { controller = "Daily", action = "Index"});
+app.MapControllerRoute(
+    name: "Daily",
+    pattern: "Daily",
+    defaults: new { controller = "Daily", action = "GetDaily" });
 
 app.MapControllerRoute(
     name: "Weather",
@@ -82,7 +86,7 @@ app.MapControllerRoute(
     defaults: new { controller = "Home", action = "GetWeather" });
 
 app.MapControllerRoute(
-    name: "Hourly",
+    name: "ByHourly",
     pattern: "ByHourly",
     defaults: new { controller = "Hourly", action = "Index" });
 app.MapControllerRoute(

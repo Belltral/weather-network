@@ -30,7 +30,8 @@ public class HourlyController : Controller
         if (hourly is null)
             return View("Error");
 
-        HourlyWeatherViewModel hourlyWeatherVM = MappedWeather(hourly, cookies.Language!);
+        HourlyWeatherViewModel hourlyWeatherVM = _mapper.Map<HourlyWeatherViewModel>(hourly);
+        hourlyWeatherVM.WeatherCode = hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
         return View(hourlyWeatherVM);
     }
@@ -47,27 +48,9 @@ public class HourlyController : Controller
         if (hourly is null)
             return View("Error");
 
-        HourlyWeatherViewModel hourlyWeatherVM = MappedWeather(hourly, cookies.Language!);
+        HourlyWeatherViewModel hourlyWeatherVM = _mapper.Map<HourlyWeatherViewModel>(hourly);
+        hourlyWeatherVM.WeatherCode = hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
         return PartialView("_HourlyWeatherPartial", hourlyWeatherVM);
-    }
-
-    private HourlyWeatherViewModel MappedWeather(HourlyWeather? hourly, string culture)
-    {
-        HourlyWeatherViewModel hourlyWeatherVM = new();
-
-        
-        List<string> descriptions = [];
-
-        foreach (var item in hourly.WeatherCode)
-        {
-            descriptions.Add(JsonFileUtils.WMOCodeConverter(item, culture));
-        }
-
-        hourlyWeatherVM = _mapper.Map<HourlyWeatherViewModel>(hourly);
-
-        hourlyWeatherVM.WeatherCode = descriptions;
-
-        return hourlyWeatherVM;
     }
 }
