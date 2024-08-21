@@ -1,0 +1,24 @@
+﻿@model HourlyWeatherViewModel
+
+<div class="flex-column-container border container-info-color">
+    @{
+        List<string> hourList = Model.Time.Select(hour => hour.ToString("t")).ToList();
+
+        string nowHour = DateTime.Now.Hour.ToString() + ":00";
+        int nowHourIndex = hourList.FindIndex(h => h.Contains(nowHour));
+
+        for (int i = 1; i <= 5; i++)
+        {
+            if (hourList[nowHourIndex + i] == hourList[^1]) { break; }
+
+            <div class="partial-hourly-info">
+                <h5>@(hourList[nowHourIndex + i])</h5>
+                <span>@Html.DisplayFor(Model => Model.Temperature2m[nowHourIndex + i])°</span>
+                <img src="" alt="Condition image" />
+                <h5>@Html.DisplayFor(Model => Model.PrecipitationProbability[nowHourIndex + i])%</h5>
+            </div>
+        }
+    }
+
+    @Html.ActionLink("Próximas 24 horas", "Index", "Hourly", null, new { @class = "more-info-button" })
+</div>

@@ -1,0 +1,51 @@
+﻿@model TodayWeatherViewModel
+
+<div class="border flex-column-container container-info-color">
+    <header>
+        <h3>Clima para hoje</h3>
+    </header>
+    <div class="centralize">
+        <div style="width: auto;" class="grid-layout">
+            <div class="flex-row-container weather-list-item">
+                <span class="weather-list-properties">Máxima/Mínima</span>
+                <span>
+                    @Html.DisplayFor(Model => Model.Temperature2mMax)°
+                    /@Html.DisplayFor(Model => Model.Temperature2mMin)°
+                </span>
+            </div>
+
+            <div class="flex-row-container weather-list-item">
+                <span class="weather-list-properties">Nascer do Sol</span>
+                <span>@Html.DisplayFor(Model => Model.Sunrise)</span>
+            </div>
+
+            <div class="flex-row-container weather-list-item">
+                <span class="weather-list-properties">Pôr do sol</span>
+                <span>@Html.DisplayFor(Model => Model.Sunset)</span>
+            </div>
+
+            <div class="flex-row-container weather-list-item">
+                <span class="weather-list-properties">Índice máximo de UV</span>
+                <span>@Html.DisplayFor(Model => Model.UvIndexMax)</span>
+            </div>
+
+            <div class="flex-row-container weather-list-item">
+                <span class="weather-list-properties">Possibilidade de chuva</span>
+                <span>
+                    @Html.DisplayFor(Model => Model.PrecipitationProbabilityMax)%
+                    /@Html.DisplayFor(Model => Model.PrecipitationSum)mm
+                </span>
+            </div>
+
+            <div class="flex-row-container weather-list-item">
+                <span class="weather-list-properties">Velocidade do vento</span>
+                <span>@Html.DisplayFor(Model => Model.WindSpeed10mMax)Km/h</span>
+            </div>
+
+            <div class="flex-row-container weather-list-item">
+                <span class="weather-list-properties">Direção do vento</span>
+                <span>@Html.DisplayFor(Model => Model.WindDirection10mDominant)°</span>
+            </div>
+        </div>
+    </div>
+</div>

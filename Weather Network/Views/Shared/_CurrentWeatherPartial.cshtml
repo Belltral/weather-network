@@ -1,0 +1,8 @@
+﻿@model CurrentWeatherViewModel
+
+<div class="flex-column-container border container-info-color">
+    <h3 title="City">São Paulo, Brasil</h3> <!-- TODO: Ajustar o retorno do nome da cidade e país -->
+    <span title="Condition">@Html.DisplayFor(Model => Model.WeatherCode)</span>
+    <span title="Temperature" style="font-size: 5rem; font-weight: 500;">@Html.DisplayFor(Model => Model.Temperature2m)°</span>
+    <span title="Apparent Temperature">Sensação térmica @Html.DisplayFor(Model => Model.ApparentTemperature)°</span>
+</div>

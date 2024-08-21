@@ -1,0 +1,46 @@
+﻿@model HourlyWeatherViewModel
+
+<div>
+    @{
+        for (var i = 0; i < Model.Time.Count(); i++)
+        {
+            var hour = Model.Time[i].ToString("t");
+
+            <div class="flex-column-container border container-info-color">
+                <h5>@hour</h5>
+                <h3>@Html.DisplayFor(Model => Model.Temperature2m[i])°</h3>
+                <div class="grid-layout">
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Umidade</span>
+                        <span>@Html.DisplayFor(Model => Model.RelativeHumidity2m[i])%</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Possibilidade de chuva</span>
+                        <span>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Tempo</span>
+                        <span>@Html.DisplayFor(Model => Model.WeatherCode[i])</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Velocidade do vento</span>
+                        <span>@Html.DisplayFor(Model => Model.WindSpeed80m[i])Km/h</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Direção do vento</span>
+                        <span>@Html.DisplayFor(Model => Model.WindDirection80m[i])°</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Índice UV</span>
+                        <span>@Html.DisplayFor(Model => Model.UvIndex[i]) de 11</span>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
