@@ -1,8 +1,8 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Text.Json;
+using System.Globalization;
+using WeatherNetwork.Cookies;
 using WeatherNetwork.HelperUtils;
 using WeatherNetwork.Models;
 using WeatherNetwork.Models.Base;
@@ -12,33 +12,75 @@ namespace WeatherNetwork.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IWeatherService _weatherService;
         private readonly IMapper _mapper;
+        private readonly ICookiesHandlerService _cookiesHandler;
+        private TodayWeatherViewModel todayWeatherVM;
 
-        public HomeController(ILogger<HomeController> logger, IWeatherService weatherService, IMapper mapper)
+        public HomeController(IWeatherService weatherService, IMapper mapper, ICookiesHandlerService cookiesHandler)
         {
-            _logger = logger;
             _weatherService = weatherService;
             _mapper = mapper;
+            _cookiesHandler = cookiesHandler;
         }
 
+        public async Task<ActionResult> Index()
+        {
+            NecessaryCookies cookies = new(_cookiesHandler, HttpContext);
+
+            var weather = await _weatherService.GetFullWeather(cookies.Latitude, cookies.Longitude);
+            
+            if (weather is null)
+                return View("Error");
+
+            todayWeatherVM = MappedWeather(weather, cookies.Language!);
+
+            return View(todayWeatherVM);
+        }
+
+        public async Task<ActionResult> GetWeather([FromQuery] double latitude, [FromQuery] double longitude)
+        {
+            NecessaryCookies cookies = new(_cookiesHandler, HttpContext);
+
+            _cookiesHandler.AppendCookie(HttpContext, "latitude", latitude.ToString(CultureInfo.InvariantCulture), 
+                new CookieOptions { Expires = DateTime.Now.AddDays(7)}, true);
+
+            _cookiesHandler.AppendCookie(HttpContext, "longitude", longitude.ToString(CultureInfo.InvariantCulture), 
+                new CookieOptions { Expires = DateTime.Now.AddDays(7) }, true);
+
+            var weather = await _weatherService.GetFullWeather(latitude, longitude);
+
+            if (weather is null)
+                return View("Error");
+
+            todayWeatherVM = MappedWeather(weather, cookies.Language!);
+
+            return PartialView("_FullTodayInformationPartial", todayWeatherVM);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // Auxliar methods
         private TodayWeatherViewModel MappedWeather(Weather? weather, string culture)
         {
             TodayWeatherViewModel todayWeatherVM = new TodayWeatherViewModel();
 
-            var currentWeatherCode = WMOCodeConverter.Converter(weather.Current.WeatherCode, culture);
-            var dayWeatherCode = WMOCodeConverter.Converter(weather.Daily.WeatherCode[0], culture);
-            var hourlyWeatherCode = () =>
+            var currentWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Current.WeatherCode, culture);
+            var dayWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Daily.WeatherCode[0], culture);
+            List<string> hourlyWeatherCode()
             {
-                List<string> descriptions = new List<string>();
+                List<string> descriptions = [];
 
                 foreach (var item in weather.Hourly.WeatherCode)
                 {
-                    descriptions.Add(WMOCodeConverter.Converter(item, culture));
+                    descriptions.Add(JsonFileUtils.WMOCodeConverter(item, culture));
                 }
                 return descriptions;
-            };
+            }
 
             todayWeatherVM = _mapper.Map<TodayWeatherViewModel>(weather.Daily);
             todayWeatherVM.WeatherCode = dayWeatherCode;
@@ -50,42 +92,6 @@ namespace WeatherNetwork.Controllers
             todayWeatherVM.Hourly.WeatherCode = hourlyWeatherCode();
 
             return todayWeatherVM;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult> Index()
-        {
-            string? cultureCookie = Request.Cookies["culture"];
-            string culture;
-
-            if (String.IsNullOrEmpty(cultureCookie))
-            {
-                var requestCulture = Request.HttpContext.Features.Get<IRequestCultureFeature>();
-                culture = requestCulture!.RequestCulture.Culture.ToString();
-                Response.Cookies.Append("culture", culture);
-            }
-
-            culture = cultureCookie!.Substring(0, 2);
-
-            var weather = await _weatherService.GetFullWeather(0, 0);
-
-            if (weather is null)
-                return View("Error");
-
-            TodayWeatherViewModel todayWeatherVM = MappedWeather(weather, culture ?? "pt");
-
-            return View(todayWeatherVM);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
