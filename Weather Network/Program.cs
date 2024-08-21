@@ -1,3 +1,4 @@
+using WeatherNetwork.Cookies;
 using WeatherNetwork.Mappings;
 using WeatherNetwork.Services;
 using WeatherNetwork.Services.Contracts;
@@ -12,8 +13,27 @@ builder.Services.AddHttpClient("WeatherApi", opt =>
     opt.BaseAddress = new Uri(builder.Configuration["ServiceUri:WeatherUri"]!);
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        name: "LocalHostPolicy",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5500/home.html",
+                "localhost:5500/home.html",
+                "http://localhost:5500/",
+                "localhost:5500/",
+                "http://localhost:5500",
+                "localhost:5500")
+                .WithMethods("GET", "POST")
+                .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddScoped<IWeatherService, WeatherService>();
 builder.Services.AddScoped<IDailyWeatherService, DailyWeatherService>();
+builder.Services.AddScoped<IHourlyWeatherService, HourlyWeatherService>();
+builder.Services.AddScoped<ICookiesHandlerService, CookiesHandlerService>();
 
 builder.Services.Configure<RequestLocalizationOptions>(opt =>
 {
@@ -45,12 +65,33 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCors("LocalHostPolicy");
+
 app.UseAuthorization();
 
 app.UseRequestLocalization();
 
 app.MapControllerRoute(
+    name: "DailyWeather",
+    pattern: "DailyWeather",
+    defaults: new { controller = "Daily", action = "Index"});
+
+app.MapControllerRoute(
+    name: "Weather",
+    pattern: "Weather",
+    defaults: new { controller = "Home", action = "GetWeather" });
+
+app.MapControllerRoute(
+    name: "Hourly",
+    pattern: "ByHourly",
+    defaults: new { controller = "Hourly", action = "Index" });
+app.MapControllerRoute(
+    name: "Hourly",
+    pattern: "Hourly",
+    defaults: new { controller = "Hourly", action = "GetHourly" });
+
+app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}"); //"{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}");
 
 app.Run();
