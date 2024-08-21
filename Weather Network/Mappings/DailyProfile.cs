@@ -19,7 +19,6 @@ public class DailyProfile : Profile
             .ForMember(dst => dst.Sunset, opt => opt.MapFrom(src => src.Sunset.Select(s => DateTime.Parse(s).ToString("t"))))
             .ForMember(dst => dst.UvIndexMax, opt => opt.MapFrom(src => src.UvIndexMax.Select(s => s.ToString("F0"))))
             .ForMember(dst => dst.PrecipitationSum, opt => opt.MapFrom(src => src.PrecipitationSum.Select(s => s.ToString("F0"))))
-            .ForMember(dst => dst.PrecipitationHours, opt => opt.MapFrom(src => src.PrecipitationHours.Select(s => s.ToString("F0"))))
             .ForMember(dst => dst.WindSpeed10mMax, opt => opt.MapFrom(src => src.WindSpeed10mMax.Select(s => s.ToString("F0"))));
     }
 }

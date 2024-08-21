@@ -15,7 +15,6 @@ public class TodayWeatherViewModel
     public int SunshineDuration { get; set; }
     public string? UvIndexMax { get; set; }
     public string? PrecipitationSum { get; set; }
-    public string? PrecipitationHours { get; set; }
     public int PrecipitationProbabilityMax { get; set; }
     public string? WindSpeed10mMax { get; set; }
     public int WindDirection10mDominant { get; set; }

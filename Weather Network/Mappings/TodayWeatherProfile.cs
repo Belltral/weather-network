@@ -26,7 +26,6 @@ public class TodayWeatherProfile : Profile
             .ForMember(dst => dst.UvIndexMax, opt => opt.MapFrom(src => src.UvIndexMax.FirstOrDefault().ToString("F0")))
 
             .ForMember(dst => dst.PrecipitationSum, opt => opt.MapFrom(src => src.PrecipitationSum.FirstOrDefault().ToString("F0")))
-            .ForMember(dst => dst.PrecipitationHours, opt => opt.MapFrom(src => src.PrecipitationHours.FirstOrDefault().ToString("F0")))
             .ForMember(dst => dst.PrecipitationProbabilityMax, opt => opt.MapFrom(src => src.PrecipitationProbabilityMax.FirstOrDefault()))
 
             .ForMember(dst => dst.WindSpeed10mMax, opt => opt.MapFrom(src => src.WindSpeed10mMax.FirstOrDefault().ToString("F0")))

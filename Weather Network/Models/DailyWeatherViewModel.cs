@@ -12,7 +12,6 @@ public class DailyWeatherViewModel
     public IList<int>? SunshineDuration { get; set; }
     public IList<string>? UvIndexMax { get; set; }
     public IList<string>? PrecipitationSum { get; set; }
-    public IList<string>? PrecipitationHours { get; set; }
     public IList<int>? PrecipitationProbabilityMax { get; set; }
     public IList<string>? WindSpeed10mMax { get; set; }
     public IList<int>? WindDirection10mDominant { get; set; }
