@@ -76,16 +76,16 @@ namespace WeatherNetwork.Controllers
             var dailyWeatherCode = weather.Daily.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, culture)).ToList();
 
             todayWeatherVM = _mapper.Map<TodayWeatherViewModel>(weather.Daily);
-            todayWeatherVM.WeatherCode = dayWeatherCode;
+            todayWeatherVM.WeatherCondition = dayWeatherCode;
 
             todayWeatherVM.Current = _mapper.Map<CurrentWeatherViewModel>(weather.Current);
-            todayWeatherVM.Current.WeatherCode = currentWeatherCode;
+            todayWeatherVM.Current.WeatherCondition = currentWeatherCode;
 
             todayWeatherVM.Hourly = _mapper.Map<HourlyWeatherViewModel>(weather.Hourly);
-            todayWeatherVM.Hourly.WeatherCode = hourlyWeatherCode!;
+            todayWeatherVM.Hourly.WeatherCondition = hourlyWeatherCode!;
 
             todayWeatherVM.Daily = _mapper.Map<DailyWeatherViewModel>(weather.Daily);
-            todayWeatherVM.Daily.WeatherCode = dailyWeatherCode!;
+            todayWeatherVM.Daily.WeatherCondition = dailyWeatherCode!;
 
             return todayWeatherVM;
         }

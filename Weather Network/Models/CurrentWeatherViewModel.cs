@@ -9,7 +9,8 @@ public class CurrentWeatherViewModel
     public string? ApparentTemperature { get; set; }
     public int IsDay { get; set; }
     public string? Precipitation { get; set; }
-    public string? WeatherCode { get; set; }
+    public int WeatherCode { get; set; }
+    public string? WeatherCondition { get; set; }
     public string? WindSpeed10m { get; set; }
     public int WindDirection10m { get; set; }
 }

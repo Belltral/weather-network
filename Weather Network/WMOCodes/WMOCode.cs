@@ -14,42 +14,42 @@ public enum WMOCode
     DepositingRimeFog = 48,
 
     // Light, moderate, and dense intensity
-    LightIntensity = 51,
-    ModerateIntensity = 53,
-    DenseIntensity = 55,
+    DrizzleLightIntensity = 51,
+    DrizzleModerateIntensity = 53,
+    DrizzleDenseIntensity = 55,
 
     // Light and dense intensity
-    LightDenseIntensity = 56,
-    DenseIntensity_57 = 57,
+    FreezingDrizzleLightDenseIntensity = 56,
+    FreezingDrizzleDenseIntensity = 57,
 
     // Slight, moderate and heavy intensity
-    SlightIntensity = 61,
-    ModerateIntensity_63 = 63,
-    HeavyIntensity = 65,
+    RainSlightIntensity = 61,
+    RainModerateIntensity = 63,
+    RainHeavyIntensity = 65,
 
     // Light and heavy intensity
-    LightHeavyIntensity = 66,
-    HeavyIntensity_67 = 67,
+    FreezingRainLightHeavyIntensity = 66,
+    FreezingRainHeavyIntensity = 67,
 
     // Slight, moderate, and heavy intensity
-    SlightIntensity_71 = 71,
-    ModerateIntensity_73 = 73,
-    HeavyIntensity_75 = 75,
+    SnowFallSlightIntensity = 71,
+    SnowFallModerateIntensity = 73,
+    SnowFallHeavyIntensity = 75,
 
     // Snow grains
     SnowGrains = 77,
 
     // Slight, moderate, and violent
-    Slight = 80,
-    Moderate = 81,
-    Violent = 82,
+    RainShowersSlight = 80,
+    RainShowersModerate = 81,
+    RainShowersViolent = 82,
 
     // Snow showers slight and heavy
     SnowShowersSlight = 85,
     SnowShowersHeavy = 86,
 
     // Slight or moderate
-    SlightOrModerate = 95,
+    ThunderstormSlightOrModerate = 95,
 
     // Thunderstorm with slight and heavy hail
     ThunderstormWithSlightHail = 96,

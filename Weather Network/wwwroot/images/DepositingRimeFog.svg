@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<svg width="56" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g class="am-weather-fog" fill="none" id="svg_2" stroke="#57a0ee" stroke-linecap="round" stroke-width="2" transform="translate(-10 20)">
+   <line class="am-weather-fog-1" id="svg_3" stroke-dasharray="3, 5, 17, 5, 7" x1="17.75" x2="53.75" y1="-9.5" y2="-9.5"/>
+   <line class="am-weather-fog-2" id="svg_4" stroke-dasharray="11, 7, 15" x1="25.75" x2="49.75" y1="-4.5" y2="-4.5"/>
+   <line class="am-weather-fog-3" id="svg_5" stroke-dasharray="11, 7, 3, 5, 9" x1="21.75" x2="56.75" y1="0.5" y2="0.5"/>
+   <line class="am-weather-fog-4" id="svg_6" stroke-dasharray="13, 5, 9, 5, 3" x1="23.75" x2="58.75" y1="5.5" y2="5.5"/>
+  </g>
+ </g>
+ <g class="layer">
+  <title>Layer 2</title>
+  <g class="snow" id="svg_1">
+   <g fill="none" id="svg_7" stroke="#57a0ee" stroke-linecap="round" transform="translate(3 28)">
+    <line id="svg_8" stroke-width="1.2" transform="translate(0 9)" x1="19.75" x2="19.75" y1="-8.25" y2="-3.25"/>
+    <line id="svg_9" transform="rotate(45 8.886 -1.25)" x1="19.75" x2="19.75" y1="-8.25" y2="-3.25"/>
+    <line id="svg_10" transform="rotate(90 15.25 -1.25)" x1="19.75" x2="19.75" y1="-8.25" y2="-3.25"/>
+    <line id="svg_11" transform="rotate(135 17.886 -1.25)" x1="19.75" x2="19.75" y1="-8.25" y2="-3.25"/>
+   </g>
+  </g>
+  <g class="snow" id="svg_12">
+   <g fill="none" id="svg_13" stroke="#57a0ee" stroke-linecap="round" transform="translate(3 28)">
+    <line id="svg_14" stroke-width="1.2" transform="translate(0 9)" x1="31.55" x2="31.55" y1="-8.18" y2="-3.18"/>
+    <line id="svg_15" transform="rotate(45 20.686 -1.17825)" x1="31.55" x2="31.55" y1="-8.18" y2="-3.18"/>
+    <line id="svg_16" transform="rotate(90 27.05 -1.17825)" x1="31.55" x2="31.55" y1="-8.18" y2="-3.18"/>
+    <line id="svg_17" transform="rotate(135 29.686 -1.17825)" x1="31.55" x2="31.55" y1="-8.18" y2="-3.18"/>
+   </g>
+  </g>
+ </g>
+</svg>

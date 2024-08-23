@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<svg width="56" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
+
+ <g class="layer">
+  <title>Layer 1</title>
+  <g class="am-weather-snow-1" id="svg_4">
+   <g fill="none" id="svg_5" stroke="#57a0ee" stroke-linecap="round" transform="translate(3 28)">
+    <line id="svg_6" stroke-width="1.2" transform="translate(0 9)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+    <line id="svg_7" transform="rotate(45 5.136 -11.75)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+    <line id="svg_8" transform="rotate(90 11.5 -11.75)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+    <line id="svg_9" transform="rotate(135 14.136 -11.75)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+   </g>
+  </g>
+  <g class="am-weather-snow-2" id="svg_10">
+   <g fill="none" id="svg_11" stroke="#57a0ee" stroke-linecap="round" transform="translate(11 28)">
+    <line id="svg_12" stroke-width="1.2" transform="translate(0 9)" x1="16.5" x2="16.5" y1="-18.75" y2="-13.75"/>
+    <line id="svg_13" transform="rotate(45 5.636 -11.75)" x1="16.5" x2="16.5" y1="-18.75" y2="-13.75"/>
+    <line id="svg_14" transform="rotate(90 12 -11.75)" x1="16.5" x2="16.5" y1="-18.75" y2="-13.75"/>
+    <line id="svg_15" transform="rotate(135 14.636 -11.75)" x1="16.5" x2="16.5" y1="-18.75" y2="-13.75"/>
+   </g>
+  </g>
+  <g class="am-weather-snow-3" id="svg_16">
+   <g fill="none" id="svg_17" stroke="#57a0ee" stroke-linecap="round" transform="translate(20 28)">
+    <line id="svg_18" stroke-width="1.2" transform="translate(0 9)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+    <line id="svg_19" transform="rotate(45 5.136 -11.75)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+    <line id="svg_20" transform="rotate(90 11.5 -11.75)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+    <line id="svg_21" transform="rotate(135 14.136 -11.75)" x1="16" x2="16" y1="-18.75" y2="-13.75"/>
+   </g>
+  </g>
+  <g class="am-weather-snow-1" id="svg_34">
+   <g fill="none" id="svg_35" stroke="#57a0ee" stroke-linecap="round" transform="translate(3 28)">
+    <line id="svg_36" stroke-width="1.2" transform="translate(0 9)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+    <line id="svg_37" transform="rotate(45 5.186 -3.67825)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+    <line id="svg_38" transform="rotate(90 11.55 -3.67825)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+    <line id="svg_39" transform="rotate(135 14.186 -3.67825)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+   </g>
+  </g>
+  <g class="am-weather-snow-2" id="svg_28">
+   <g fill="none" id="svg_29" stroke="#57a0ee" stroke-linecap="round" transform="translate(11 28)">
+    <line id="svg_30" stroke-width="1.2" transform="translate(0 9)" x1="16.55" x2="16.55" y1="-10.68" y2="-5.68"/>
+    <line id="svg_31" transform="rotate(45 5.686 -3.67825)" x1="16.55" x2="16.55" y1="-10.68" y2="-5.68"/>
+    <line id="svg_32" transform="rotate(90 12.05 -3.67825)" x1="16.55" x2="16.55" y1="-10.68" y2="-5.68"/>
+    <line id="svg_33" transform="rotate(135 14.686 -3.67825)" x1="16.55" x2="16.55" y1="-10.68" y2="-5.68"/>
+   </g>
+  </g>
+  <g class="am-weather-snow-3" id="svg_22">
+   <g fill="none" id="svg_23" stroke="#57a0ee" stroke-linecap="round" transform="translate(20 28)">
+    <line id="svg_24" stroke-width="1.2" transform="translate(0 9)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+    <line id="svg_25" transform="rotate(45 5.186 -3.67825)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+    <line id="svg_26" transform="rotate(90 11.55 -3.67825)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+    <line id="svg_27" transform="rotate(135 14.186 -3.67825)" x1="16.05" x2="16.05" y1="-10.68" y2="-5.68"/>
+   </g>
+  </g>
+ </g>
+</svg>

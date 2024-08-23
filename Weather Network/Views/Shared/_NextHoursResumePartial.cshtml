@@ -6,14 +6,57 @@
 
         for (int i = 1; i <= 5; i++)
         {
-            if (hourList[i] == hourList[^1]) { break; }
+            var hour = Model.Time[i].ToString("t");
 
-            <div class="partial-hourly-info">
-                <h5>@(hourList[i])</h5>
-                <span>@Html.DisplayFor(Model => Model.Temperature2m[i])°</span>
-                <img src="" alt="Condition image" />
-                <h5>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</h5>
-            </div>
+            var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i])}";
+
+            <details class="partial-hourly-display">
+                <summary class="partial-hourly-info">
+                    <h4>@hour</h4>
+                    <span><strong>@Html.DisplayFor(Model => Model.Temperature2m[i])°</strong></span>
+                    <img src=@image alt="condition-icon">
+                    <h6>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</h6>
+                </summary>
+
+                <div class="grid-layout">
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Umidade</span>
+                        <span>@Html.DisplayFor(Model => Model.RelativeHumidity2m[i])%</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Possibilidade de chuva</span>
+                        <span>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Tempo</span>
+                        <span>@Html.DisplayFor(Model => Model.WeatherCondition[i])</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Velocidade do vento</span>
+                        <span>@Html.DisplayFor(Model => Model.WindSpeed80m[i])Km/h</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Direção do vento</span>
+                        <span>@Html.DisplayFor(Model => Model.WindDirection80m[i])°</span>
+                    </div>
+
+                    <div class="flex-row-container weather-list-item">
+                        <span class="weather-list-properties">Índice UV</span>
+                        <span>@Html.DisplayFor(Model => Model.UvIndex[i]) de 11</span>
+                    </div>
+                </div>
+            </details>
+
+            // <div class="partial-hourly-info">
+            //     <h5>@(hourList[i])</h5>
+            //     <span>@Html.DisplayFor(Model => Model.Temperature2m[i])°</span>
+            //     <img src="" alt="Condition image" />
+            //     <h5>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</h5>
+            // </div>
         }
     }
 

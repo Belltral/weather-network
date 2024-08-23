@@ -7,7 +7,8 @@ public class TodayWeatherViewModel
     public DailyWeatherViewModel? Daily { get; set; }
 
     public string? Time { get; set; }
-    public string? WeatherCode { get; set; }
+    public int WeatherCode { get; set; }
+    public string? WeatherCondition { get; set; }
     public string? Temperature2mMax { get; set; }
     public string? Temperature2mMin { get; set; }
     public string? Sunrise { get; set; }

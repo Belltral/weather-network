@@ -25,13 +25,13 @@ namespace WeatherNetwork.Controllers
         {
             NecessaryCookies cookies = new(_cookiesHandler, HttpContext);
 
-            var dailyWeather = await _dailyWeatherService.GetDailyWeather(0, 0);
+            var dailyWeather = await _dailyWeatherService.GetDailyWeather(cookies.Latitude, cookies.Longitude);
 
             if (dailyWeather is null)
                 return View("Error");
 
             var dailyWeatherVM = _mapper.Map<DailyWeatherViewModel>(dailyWeather);
-            dailyWeatherVM.WeatherCode = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
+            dailyWeatherVM.WeatherCondition = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
             return View(dailyWeatherVM);
         }
@@ -54,7 +54,7 @@ namespace WeatherNetwork.Controllers
                 return View("Error");
 
             var dailyWeatherVM = _mapper.Map<DailyWeatherViewModel>(dailyWeather);
-            dailyWeatherVM.WeatherCode = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
+            dailyWeatherVM.WeatherCondition = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
             return PartialView("_DailyWeatherPartial", dailyWeatherVM);
         }

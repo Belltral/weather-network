@@ -3,7 +3,8 @@
 public class DailyWeatherViewModel
 {
     public IList<DateTime>? Time { get; set; }
-    public IList<string>? WeatherCode { get; set; }
+    public IList<int>? WeatherCode { get; set; }
+    public IList<string>? WeatherCondition { get; set; }
     public IList<string>? Temperature2mMax { get; set; }
     public IList<string>? Temperature2mMin { get; set; }
     public IList<string>? Sunrise { get; set; }

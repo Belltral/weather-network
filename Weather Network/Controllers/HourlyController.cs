@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WeatherNetwork.HelperUtils;
-using WeatherNetwork.Models.Base;
 using WeatherNetwork.Models;
 using WeatherNetwork.Services.Contracts;
 using WeatherNetwork.Cookies;
@@ -31,7 +30,7 @@ public class HourlyController : Controller
             return View("Error");
 
         HourlyWeatherViewModel hourlyWeatherVM = _mapper.Map<HourlyWeatherViewModel>(hourly);
-        hourlyWeatherVM.WeatherCode = hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
+        hourlyWeatherVM.WeatherCondition = hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
         return View(hourlyWeatherVM);
     }
@@ -49,7 +48,7 @@ public class HourlyController : Controller
             return View("Error");
 
         HourlyWeatherViewModel hourlyWeatherVM = _mapper.Map<HourlyWeatherViewModel>(hourly);
-        hourlyWeatherVM.WeatherCode = hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
+        hourlyWeatherVM.WeatherCondition = hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
 
         return PartialView("_HourlyWeatherPartial", hourlyWeatherVM);
     }

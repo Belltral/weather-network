@@ -11,7 +11,7 @@ public class WeatherService : IWeatherService
     private const string currentWeatherQuery = "&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,wind_speed_10m,wind_direction_10m,weather_code";
     private const string hourlyWeatherQuery = "&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,wind_speed_80m,wind_direction_80m,uv_index,weather_code";
     private const string dailyWeatherQuery = "&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,sunshine_duration,uv_index_max,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_direction_10m_dominant,weather_code";
-    private const string otherOptionsQuery = "&timezone=auto&forecast_hours=24";
+    private const string otherOptionsQuery = "&timezone=auto&forecast_hours=6&forecast_days=6";
 
     private const string allDayQuery = currentWeatherQuery+hourlyWeatherQuery+dailyWeatherQuery+otherOptionsQuery;
     

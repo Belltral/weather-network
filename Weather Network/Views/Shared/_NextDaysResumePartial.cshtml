@@ -5,11 +5,12 @@
     {
         var date = Model.Time[i].ToString("dd/MM");
         var weekDay = Model.Time[i].ToString("ddd");
+        var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i])}";
 
         <div class="daily-partial-infos">
             <span>@weekDay</span>
             <span>@date</span>
-            <img src="" alt="condition-icon" />
+            <img src=@image alt="condition-icon" />
             <span>
                 @Html.DisplayFor(Model => Model.Temperature2mMax[i])° /
                 @Html.DisplayFor(Model => Model.Temperature2mMin[i])°

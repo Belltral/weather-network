@@ -15,101 +15,126 @@
     "Value": 3,
     "pt": "Nublado"
   },
+
   "Fog": {
     "Value": 45,
     "pt": "Nevoeiro"
   },
   "DepositingRimeFog": {
     "Value": 48,
-    "pt": "Nevoeiro com gelo depositado"
+    "pt": "Nevoeiro com gelo"
   },
-  "LightIntensity": {
+
+  "DrizzleLightIntensity": {
     "Value": 51,
-    "pt": "Intensidade leve"
+    "pt": "Garoa leve",
+    "icon" : "Rain" 
   },
-  "ModerateIntensity": {
+  "DrizzleModerateIntensity": {
     "Value": 53,
-    "pt": "Intensidade moderada"
+    "pt": "Garoa moderada",
+    "icon" : "Rain" 
   },
-  "DenseIntensity": {
+  "DrizzleDenseIntensity": {
     "Value": 55,
-    "pt": "Intensidade densa"
+    "pt": "Garoa forte",
+    "icon" : "Rain" 
   },
-  "LightDenseIntensity": {
+
+  "FreezingDrizzleLightDenseIntensity": {
     "Value": 56,
-    "pt": "Intensidade leve densa"
+    "pt": "Garoa congelada leve",
+    "icon" : "FreezingRain" 
   },
-  "DenseIntensity_57": {
+  "FreezingDrizzleDenseIntensity": {
     "Value": 57,
-    "pt": "Intensidade densa"
+    "pt": "Garoa congelada forte",
+    "icon" : "FreezingRain" 
   },
-  "SlightIntensity": {
+
+  "RainSlightIntensity": {
     "Value": 61,
-    "pt": "Intensidade ligeira"
+    "pt": "Chuva fraca",
+    "icon" : "Rain" 
   },
-  "ModerateIntensity_63": {
+  "RainModerateIntensity": {
     "Value": 63,
-    "pt": "Intensidade moderada"
+    "pt": "Chuva moderada",
+    "icon" : "Rain" 
   },
-  "HeavyIntensity": {
+  "RainHeavyIntensity": {
     "Value": 65,
-    "pt": "Intensidade forte"
+    "pt": "Chuva forte",
+    "icon" : "Rain" 
   },
-  "LightHeavyIntensity": {
+
+  "FreezingRainLightHeavyIntensity": {
     "Value": 66,
-    "pt": "Intensidade leve e forte"
+    "pt": "Chuva congelada leve",
+    "icon" : "FreezingRain" 
   },
-  "HeavyIntensity_67": {
+  "FreezingRainHeavyIntensity": {
     "Value": 67,
-    "pt": "Intensidade forte"
+    "pt": "Chuva congelada forte",
+    "icon" : "FreezingRain" 
   },
-  "SlightIntensity_71": {
+
+  "SnowFallSlightIntensity": {
     "Value": 71,
-    "pt": "Intensidade ligeira"
+    "pt": "Neve fraca"
   },
-  "ModerateIntensity_73": {
+  "SnowFallModerateIntensity": {
     "Value": 73,
-    "pt": "Intensidade moderada"
+    "pt": "Neve moderada"
   },
-  "HeavyIntensity_75": {
+  "SnowFallHeavyIntensity": {
     "Value": 75,
-    "pt": "Intensidade forte"
+    "pt": "Neve intensa"
   },
+
   "SnowGrains": {
     "Value": 77,
     "pt": "Grãos de neve"
   },
-  "Slight": {
+
+  "RainShowersSlight": {
     "Value": 80,
-    "pt": "Ligeira"
+    "pt": "Pancada de chuva fraca",
+    "icon" : "Rain" 
   },
-  "Moderate": {
+  "RainShowersModerate": {
     "Value": 81,
-    "pt": "Moderada"
+    "pt": "Pancada de chuva moderada",
+    "icon" : "Rain" 
   },
-  "Violent": {
+  "RainShowersViolent": {
     "Value": 82,
-    "pt": "Violenta"
+    "pt": "Pancada de chuva forte",
+    "icon" : "Rain" 
   },
+
   "SnowShowersSlight": {
     "Value": 85,
-    "pt": "Neve leve"
+    "pt": "Nevasca leve"
   },
   "SnowShowersHeavy": {
     "Value": 86,
-    "pt": "Neve pesada"
+    "pt": "Nevasca pesada"
   },
-  "SlightOrModerate": {
+
+  "ThunderstormSlightOrModerate": {
     "Value": 95,
-    "pt": "Ligeira ou moderada"
+    "pt": "Tempestade leve ou moderada"
   },
+
   "ThunderstormWithSlightHail": {
     "Value": 96,
-    "pt": "Trovoada com granizo leve"
+    "pt": "Tempestade com granizo leve",
+    "icon" : "ThunderstormWithHail" 
   },
   "ThunderstormWithHeavyHail": {
     "Value": 99,
-    "pt": "Trovoada com granizo forte"
+    "pt": "Tempestade com granizo forte",
+    "icon" : "ThunderstormWithHail"
   }
 }
-

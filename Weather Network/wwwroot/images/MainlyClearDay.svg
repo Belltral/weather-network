@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<svg width="56" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
+
+ <g class="layer">
+  <title>Layer 1</title>
+  <g class="am-weather-cloud-1" id="svg_19">
+   <path d="m63.7,33.4c0,-4.6 -3.7,-8.2 -8.2,-8.2c-1,0 -1.9,0.2 -2.8,0.5c-0.3,-3.4 -3.1,-6.2 -6.6,-6.2c-3.7,0 -6.7,3 -6.7,6.7c0,0.8 0.2,1.6 0.4,2.3c-0.3,-0.1 -0.7,-0.1 -1,-0.1c-3.7,0 -6.7,3 -6.7,6.7c0,3.6 2.9,6.6 6.5,6.7l17.2,0c4.4,-0.5 7.9,-4 7.9,-8.4z" fill="#c6deff" id="svg_20" stroke="#fff" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20 -11)"/>
+  </g>
+  <g class="am-weather-sun" id="svg_2">
+   <line fill="none" id="svg_3" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="16" x2="16" y1="14" y2="17"/>
+   <g id="svg_4" transform="rotate(45 16 14)">
+    <line fill="none" id="svg_5" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="16" x2="16" y1="14" y2="17"/>
+   </g>
+   <g id="svg_6" transform="rotate(90 16 14)">
+    <line fill="none" id="svg_7" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="16" x2="16" y1="14" y2="17"/>
+   </g>
+   <g id="svg_8" transform="rotate(135 16 14)">
+    <line fill="none" id="svg_9" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="16" x2="16" y1="14" y2="17"/>
+   </g>
+   <g id="svg_10" transform="translate(16 -2) scale(-1 -1)">
+    <line fill="none" id="svg_11" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="0" x2="0" y1="-16" y2="-13"/>
+   </g>
+   <g id="svg_12" transform="rotate(225 16 14)">
+    <line fill="none" id="svg_13" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="16" x2="16" y1="14" y2="17"/>
+   </g>
+   <g id="svg_14" transform="rotate(-90 16 14)">
+    <line fill="none" id="svg_15" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="16" x2="16" y1="14" y2="17"/>
+   </g>
+   <g id="svg_16" transform="rotate(-45 16 14)">
+    <line fill="none" id="svg_17" stroke="#ffa500" stroke-linecap="round" stroke-width="2" transform="translate(0 9)" x1="16" x2="16" y1="14" y2="17"/>
+   </g>
+   <circle cx="16" cy="14" fill="#ffa500" id="svg_18" r="5" stroke="#ffa500" stroke-width="2"/>
+  </g>
+ </g>
+</svg>

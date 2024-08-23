@@ -1,62 +1,65 @@
 ﻿@model DailyWeatherViewModel
 
-<div class="">
+<div class="border flex-column-container container-info-color">
     @{
         for (int i = 0; i < Model.Time.Count(); i++)
         {
             var date = Model.Time[i].ToString("dd/MM");
+            var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i])}";
 
-            <div class="border flex-column-container container-info-color">
-                <header>
-                    <h4>@date</h4>
-                    <h3>@Html.DisplayFor(Model => Model.Temperature2mMax[i])°/@Html.DisplayFor(Model => Model.Temperature2mMin[i])°</h3>
-                </header>
-                <div class="centralize">
-                    <div style="width: auto;" class="grid-layout">
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Nascer do Sol</span>
-                            <span>@Html.DisplayFor(Model => Model.Sunrise[i])</span>
-                        </div>
+                <details>
+                    <summary>
+                        <h4>@date</h4>
+                        <h5>@Html.DisplayFor(Model => Model.Temperature2mMax[i])°/@Html.DisplayFor(Model => Model.Temperature2mMin[i])°</h5>
+                        <img src=@image alt="condition-icon">
+                        <span>@Html.DisplayFor(Model => Model.PrecipitationProbabilityMax[i])%</span>
+                    </summary>
+                    <div class="centralize">
+                        <div style="width: auto;" class="grid-layout">
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Nascer do Sol</span>
+                                <span>@Html.DisplayFor(Model => Model.Sunrise[i])</span>
+                            </div>
 
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Pôr do sol</span>
-                            <span>@Html.DisplayFor(Model => Model.Sunset[i])</span>
-                        </div>
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Pôr do sol</span>
+                                <span>@Html.DisplayFor(Model => Model.Sunset[i])</span>
+                            </div>
 
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Condição</span>
-                            <span>@Html.DisplayFor(Model => Model.WeatherCode[i])</span>
-                        </div>
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Condição</span>
+                                <span>@Html.DisplayFor(Model => Model.WeatherCondition[i])</span>
+                            </div>
 
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Índice máximo de UV</span>
-                            <span>@Html.DisplayFor(Model => Model.UvIndexMax[i]) de 11</span>
-                        </div>
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Índice máximo de UV</span>
+                                <span>@Html.DisplayFor(Model => Model.UvIndexMax[i]) de 11</span>
+                            </div>
 
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Possibilidade de chuva</span>
-                            <span>
-                                @Html.DisplayFor(Model => Model.PrecipitationSum[i])mm/
-                                @Html.DisplayFor(Model => Model.PrecipitationProbabilityMax[i])%
-                            </span>
-                        </div>
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Possibilidade de chuva</span>
+                                <span>
+                                    @Html.DisplayFor(Model => Model.PrecipitationSum[i])mm/
+                                    @Html.DisplayFor(Model => Model.PrecipitationProbabilityMax[i])%
+                                </span>
+                            </div>
 
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Velocidade do vento</span>
-                            <span>@Html.DisplayFor(Model => Model.WindSpeed10mMax[i]) Km/h</span>
-                        </div>
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Velocidade do vento</span>
+                                <span>@Html.DisplayFor(Model => Model.WindSpeed10mMax[i]) Km/h</span>
+                            </div>
 
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Direção do vento</span>
-                            <span>@Html.DisplayFor(Model => Model.WindDirection10mDominant[i])°</span>
-                        </div>
-                        <div class="flex-row-container weather-list-item">
-                            <span class="weather-list-properties">Duração luz do dia</span>
-                            <span>@Html.DisplayFor(Model => Model.DaylightDuration[i]) h</span>
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Direção do vento</span>
+                                <span>@Html.DisplayFor(Model => Model.WindDirection10mDominant[i])°</span>
+                            </div>
+                            <div class="flex-row-container weather-list-item">
+                                <span class="weather-list-properties">Duração luz do dia</span>
+                                <span>@Html.DisplayFor(Model => Model.DaylightDuration[i]) h</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </details>
         }
     }
 </div>
