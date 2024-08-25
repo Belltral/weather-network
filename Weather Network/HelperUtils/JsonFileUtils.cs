@@ -26,7 +26,7 @@ public class JsonFileUtils
         return null;
     }
 
-    public static Dictionary<string, string>? DefaultCoordinates(string localization)
+    public static Dictionary<string, string>? DefaultLocalization(string culture)
     {
         using StreamReader streamReader = new (localizationsFile);
         using JsonDocument document = JsonDocument.Parse(streamReader.ReadToEnd());
@@ -34,12 +34,17 @@ public class JsonFileUtils
         Dictionary<string, string> coordinates = [];
 
         JsonElement root = document.RootElement;
-        bool localizationExists = root.TryGetProperty(localization, out JsonElement foundLocalization);
+        bool localizationExists = root.TryGetProperty(culture[3..], out JsonElement foundLocalization);
 
         if (localizationExists)
         {
             coordinates.Add("latitude", foundLocalization.GetProperty("latitude").ToString());
             coordinates.Add("longitude", foundLocalization.GetProperty("longitude").ToString());
+
+            coordinates.Add("city", foundLocalization.GetProperty("city").ToString());
+
+            var countryObj = foundLocalization.GetProperty("country");
+            coordinates.Add("country", countryObj.GetProperty(culture[..2]).ToString());
 
             return coordinates;
         }
@@ -47,13 +52,12 @@ public class JsonFileUtils
         return null;
     }
 
-    public static string? IconName(int wmoCode)
+    public static string? IconName(int wmoCode, int dayNightCode = 1)
     {
         string imagesPath = @"D:\Estudos\Front-End\WeatherNetwork\images";
 
-        int dayNightCode = 0;
-        string dayNight = (dayNightCode == 0) ? "Day" : "Night";
-        List<int> dayNightVariables = [0, 1, 2];
+        string dayNight = (dayNightCode == 1) ? "Day" : "Night";
+        List<int> dayNightVariables = [0, 1, 2, 45];
         string? wmoCondition = ((WMOCode)wmoCode).ToString();
 
         bool fileExists = File.Exists(imagesPath + @$"\{wmoCondition}.svg");

@@ -49,6 +49,23 @@ nav {
     width: 290px;
 }
 
+.current {
+    display: flex;
+    flex-direction: column;
+}
+
+.background-clearsky {
+    background: linear-gradient(270deg, rgba(0,86,212,1) 30%, rgba(0,160,255,1) 76%);
+}
+
+.background-mainlyclear {
+    background: linear-gradient(270deg, rgba(87,142,221,1) 30%, rgba(142,188,255,1) 76%);
+}
+
+.background-overcast {
+    background: linear-gradient(270deg, rgb(184, 196, 213) 30%, rgba(229,229,229,1) 76%);
+}
+
 .navigation-items {
     width: 100%;
     text-decoration: none;
@@ -75,7 +92,6 @@ nav {
 
 .border {
     border-radius: 7px;
-    padding: 5px 10px;
 }
 
 .weather-list-properties {
@@ -87,10 +103,14 @@ nav {
     margin-bottom: 5px;
 }
 
-.partial-hourly-display {
-    border: 0;
-    border-bottom: 1px solid #d4d4d4;
-    border-radius: 0;
+.partial-hourly-container, .daily-partial-info-container {
+    width: 650px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.details-container {
+    margin-left: 10px;
 }
 
 .partial-hourly-info {
@@ -114,7 +134,7 @@ nav {
         background-color: #008dff1f;
     }
 
-.grid-layout {
+.grid-layout, .details-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0 36px;
@@ -144,7 +164,7 @@ nav {
 }
 
 .container-info-color, .daily-partial-infos {
-    background-color: #F4F4F4;
+    background-color: #FFF;
 }
 
 .dropdown {
@@ -152,7 +172,6 @@ nav {
     top: 100%;
     width: 100%;
     background-color: white;
-    border: 1px solid #ccc;
     border-top: none;
     z-index: 1000;
     display: none;
@@ -202,10 +221,6 @@ nav {
         cursor: pointer;
     }
 
-.daily-partial-info-container {
-    width: 650px;
-}
-
 .daily-partial-infos {
     display: flex;
     justify-content: space-around;
@@ -219,11 +234,8 @@ nav {
 }
 
 details {
-    padding: 0 0 7px 5px;
-    border: 1px solid #d4d4d4;
-    padding: 2px;
-    margin: 2px;
-    border-radius: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #d4d4d4;
 }
 
     details summary {
@@ -233,7 +245,19 @@ details {
         justify-content: space-between;
         padding: 7px;
     }
+
+        details summary span {
+            min-width: 65px;
+        }
+
     details h5 {
         font-size: 30px;
         font-weight: 625;
     }
+
+.titles {
+    font-size: 20px;
+    border-bottom: 1px solid #d4d4d4;
+    height: 55px;
+    padding: 10px;
+}

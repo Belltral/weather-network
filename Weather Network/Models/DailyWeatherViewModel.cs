@@ -2,6 +2,7 @@
 
 public class DailyWeatherViewModel
 {
+    public string? CityCountry { get; set; }
     public IList<DateTime>? Time { get; set; }
     public IList<int>? WeatherCode { get; set; }
     public IList<string>? WeatherCondition { get; set; }

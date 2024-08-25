@@ -2,6 +2,7 @@
 
 public class HourlyWeatherViewModel
 {
+    public string? CityCountry { get; set; }
     public IList<DateTime>? Time { get; set; }
     public IList<string>? Temperature2m { get; set; }
     public IList<int>? RelativeHumidity2m { get; set; }

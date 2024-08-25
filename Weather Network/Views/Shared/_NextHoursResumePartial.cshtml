@@ -1,21 +1,23 @@
 ﻿@model HourlyWeatherViewModel
 
-<div class="flex-column-container border container-info-color">
+<div class="partial-hourly-container flex-column-container border container-info-color">
     @{
-        List<string> hourList = Model.Time.Select(hour => hour.ToString("t")).ToList();
-
         for (int i = 1; i <= 5; i++)
         {
             var hour = Model.Time[i].ToString("t");
 
-            var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i])}";
+            var dayNightCode = (Model.Time[i].Hour >= 5 && Model.Time[i].Hour < 18) ? 1 : 0;
+            var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i], dayNightCode)}";
 
-            <details class="partial-hourly-display">
-                <summary class="partial-hourly-info">
+            <details>
+                <summary>
                     <h4>@hour</h4>
-                    <span><strong>@Html.DisplayFor(Model => Model.Temperature2m[i])°</strong></span>
+                    <h5>@Html.DisplayFor(Model => Model.Temperature2m[i])°</h5>
                     <img src=@image alt="condition-icon">
-                    <h6>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</h6>
+                    <span>
+                        <img src="images/WaterDrop.svg" alt="" />
+                        @Html.DisplayFor(Model => Model.PrecipitationProbability[i])%
+                    </span>
                 </summary>
 
                 <div class="grid-layout">
@@ -50,15 +52,8 @@
                     </div>
                 </div>
             </details>
-
-            // <div class="partial-hourly-info">
-            //     <h5>@(hourList[i])</h5>
-            //     <span>@Html.DisplayFor(Model => Model.Temperature2m[i])°</span>
-            //     <img src="" alt="Condition image" />
-            //     <h5>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</h5>
-            // </div>
         }
     }
 
-    @Html.ActionLink("Próximas 24 horas", "Index", "Hourly", null, new { @class = "more-info-button" })
+    @Html.ActionLink("Próximas 24 horas", "Index", "Hourly", null, new { @style = "margin-left: 12px;", @class = "more-info-button" })
 </div>

@@ -41,31 +41,30 @@ public class CookiesHandlerService : ICookiesHandlerService
         return culture;
     }
 
-    public Dictionary<string, string>? CoordinatesRequest(HttpContext httpContext, string localization)
+    public Dictionary<string, string>? LocalizationRequest(HttpContext httpContext, string culture)
     {
-        string? latitude = httpContext.Request.Cookies["latitude"];
-        string? longitude = httpContext.Request.Cookies["longitude"];
+        IList<string> cookiesName = ["latitude", "longitude", "city", "country"];
 
         Dictionary<string, string> coordinates = [];
 
-        if (String.IsNullOrEmpty(latitude) && String.IsNullOrEmpty(longitude))
+        foreach (var name in cookiesName)
         {
-            var defaultCoordinates = JsonFileUtils.DefaultCoordinates(localization);
+            coordinates.Add(name, httpContext.Request.Cookies[name]);
+        }
 
-            string defaultLatitude = defaultCoordinates!["latitude"];
-            string defaultLongitude = defaultCoordinates!["longitude"];
+        if (String.IsNullOrEmpty(coordinates["latitude"]) && String.IsNullOrEmpty(coordinates["longitude"]))
+        {
+            var defaultCoordinates = JsonFileUtils.DefaultLocalization(culture);
+            coordinates.Clear();
 
-            httpContext.Response.Cookies.Append("latitude", defaultLatitude);
-            httpContext.Response.Cookies.Append("longitude", defaultLongitude);
-
-            coordinates.Add("latitude", defaultLatitude);
-            coordinates.Add("longitude", defaultLongitude);
+            foreach (var name in cookiesName)
+            {
+                httpContext.Response.Cookies.Append(name, defaultCoordinates![name], new CookieOptions { Expires = DateTime.Now.AddDays(15)});
+                coordinates.Add(name, defaultCoordinates![name]);
+            }
 
             return coordinates;
         }
-
-        coordinates.Add("latitude", latitude!);
-        coordinates.Add("longitude", longitude!);
 
         return coordinates;
     }

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
 using WeatherNetwork.Cookies;
 using WeatherNetwork.HelperUtils;
 using WeatherNetwork.Models;
@@ -32,21 +31,19 @@ namespace WeatherNetwork.Controllers
 
             var dailyWeatherVM = _mapper.Map<DailyWeatherViewModel>(dailyWeather);
             dailyWeatherVM.WeatherCondition = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
+            dailyWeatherVM.CityCountry = $"{cookies.City}, {cookies.Country}";
 
             return View(dailyWeatherVM);
         }
 
-        public async Task<ActionResult> GetDaily([FromQuery] double latitude, [FromQuery] double longitude)
+        public async Task<ActionResult> GetDaily([FromQuery] double latitude, [FromQuery] double longitude,
+            [FromQuery] string city, [FromQuery] string country)
         {
             if (latitude == 0 || longitude == 0)
                 return View("Error");
 
             NecessaryCookies cookies = new(_cookiesHandler, HttpContext);
-
-            _cookiesHandler.AppendCookie(HttpContext, "latitude", latitude.ToString(CultureInfo.InvariantCulture),
-                new CookieOptions { Expires = DateTime.Now.AddDays(7)}, true);
-            _cookiesHandler.AppendCookie(HttpContext, "longitude", longitude.ToString(CultureInfo.InvariantCulture),
-                new CookieOptions { Expires = DateTime.Now.AddDays(7) }, true);
+            cookies.SaveLocalization(latitude, longitude, city, country);
 
             var dailyWeather = await _dailyWeatherService.GetDailyWeather(latitude, longitude);
 
@@ -55,6 +52,7 @@ namespace WeatherNetwork.Controllers
 
             var dailyWeatherVM = _mapper.Map<DailyWeatherViewModel>(dailyWeather);
             dailyWeatherVM.WeatherCondition = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
+            dailyWeatherVM.CityCountry = $"{city}, {country}";
 
             return PartialView("_DailyWeatherPartial", dailyWeatherVM);
         }

@@ -1,6 +1,13 @@
 ﻿@model DailyWeatherViewModel
 
 <div class="border flex-column-container container-info-color">
+
+    <div class="titles">
+        <strong>A cada hora </strong>
+        -
+        <span>@Html.DisplayFor(Model => Model.CityCountry)</span>
+    </div>
+
     @{
         for (int i = 0; i < Model.Time.Count(); i++)
         {
@@ -12,7 +19,10 @@
                         <h4>@date</h4>
                         <h5>@Html.DisplayFor(Model => Model.Temperature2mMax[i])°/@Html.DisplayFor(Model => Model.Temperature2mMin[i])°</h5>
                         <img src=@image alt="condition-icon">
-                        <span>@Html.DisplayFor(Model => Model.PrecipitationProbabilityMax[i])%</span>
+                        <span>
+                            <img src="./images/WaterDrop.svg" alt="" />
+                            @Html.DisplayFor(Model => Model.PrecipitationProbabilityMax[i])%
+                        </span>
                     </summary>
                     <div class="centralize">
                         <div style="width: auto;" class="grid-layout">

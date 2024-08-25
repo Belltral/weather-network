@@ -1,7 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Globalization;
 using WeatherNetwork.Cookies;
 using WeatherNetwork.HelperUtils;
 using WeatherNetwork.Models;
@@ -34,19 +33,16 @@ namespace WeatherNetwork.Controllers
                 return View("Error");
 
             todayWeatherVM = MappedWeather(weather, cookies.Language!);
+            todayWeatherVM.Current.CityCountry = $"{cookies.City}, {cookies.Country}";
 
             return View(todayWeatherVM);
         }
 
-        public async Task<ActionResult> GetWeather([FromQuery] double latitude, [FromQuery] double longitude)
+        public async Task<ActionResult> GetWeather([FromQuery] double latitude, [FromQuery] double longitude, 
+            [FromQuery] string city, [FromQuery] string country)
         {
             NecessaryCookies cookies = new(_cookiesHandler, HttpContext);
-
-            _cookiesHandler.AppendCookie(HttpContext, "latitude", latitude.ToString(CultureInfo.InvariantCulture), 
-                new CookieOptions { Expires = DateTime.Now.AddDays(7)}, true);
-
-            _cookiesHandler.AppendCookie(HttpContext, "longitude", longitude.ToString(CultureInfo.InvariantCulture), 
-                new CookieOptions { Expires = DateTime.Now.AddDays(7) }, true);
+            cookies.SaveLocalization(latitude, longitude, city, country);
 
             var weather = await _weatherService.GetFullWeather(latitude, longitude);
 
@@ -54,6 +50,7 @@ namespace WeatherNetwork.Controllers
                 return View("Error");
 
             todayWeatherVM = MappedWeather(weather, cookies.Language!);
+            todayWeatherVM.Current.CityCountry = $"{city}, {country}";
 
             return PartialView("_FullTodayInformationPartial", todayWeatherVM);
         }

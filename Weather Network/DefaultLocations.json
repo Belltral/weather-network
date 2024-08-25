@@ -1,5 +1,10 @@
 {
   "BR": {
+    "city": "São Paulo",
+    "country": {
+      "pt": "Brasil",
+      "en": "Brazil"
+    },
     "latitude": -23.5475,
     "longitude": -46.6361
   }

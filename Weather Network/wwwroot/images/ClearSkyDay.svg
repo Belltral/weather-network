@@ -14,31 +14,31 @@
       </feMerge>
     </filter>
   </defs>
-  <g id="day" transform="translate(16,14)" filter="url(#blur)">
+  <g id="day" transform="translate(27,24)" filter="url(#blur)">
     <g class="am-weather-sun">
-      <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+      <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       <g transform="rotate(45)">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+        <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       </g>
       <g transform="rotate(90)">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+        <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       </g>
       <g transform="rotate(135)">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+        <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       </g>
       <g transform="scale(-1)">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+        <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       </g>
       <g transform="rotate(225)">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+        <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       </g>
       <g transform="rotate(-90)">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+        <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       </g>
       <g transform="rotate(-45)">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
+        <line transform="translate(0,14)" y2="8" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="3" />
       </g>
-      <circle r="5" fill="#ffa500" stroke="#ffa500" stroke-width="2" />
+      <circle r="9" fill="#ffa500" stroke="#ffa500" stroke-width="3" />
     </g>
   </g>
 </svg>

@@ -16,34 +16,55 @@ public class NecessaryCookies
 
     public string? Culture
     {
-        get { return _cookiesHandler.CultureRequest(_httpContext); }
+        get 
+        { 
+            var culture = _cookiesHandler.CultureRequest(_httpContext);
+            return String.IsNullOrEmpty(culture) ? "pt-BR" : culture;
+        }
     }
 
     public string? Language
     {
-        get { return String.IsNullOrEmpty(Culture) ? "pt" : Culture[..2]; }
+        get { return Culture![..2]; }
     }
 
-    public string? Localization
+    public Dictionary<string, string>? Localization
     {
-        get { return String.IsNullOrEmpty(Culture) ? "BR" : Culture[3..]; }
+        get { return _cookiesHandler.LocalizationRequest(_httpContext, Culture!); }
     }
 
     public double Latitude
     {
-        get 
-        {
-            var latitude = _cookiesHandler.CoordinatesRequest(_httpContext, Localization!);
-            return double.Parse(latitude!["latitude"], CultureInfo.InvariantCulture);
-        }
+        get { return double.Parse(Localization!["latitude"], CultureInfo.InvariantCulture); }
     }
 
     public double Longitude
     {
-        get
-        {
-            var longitude = _cookiesHandler.CoordinatesRequest(_httpContext, Localization!);
-            return double.Parse(longitude!["longitude"], CultureInfo.InvariantCulture);
-        }
+        get { return double.Parse(Localization!["longitude"], CultureInfo.InvariantCulture); }
+    }
+
+    public string? City
+    {
+        get { return Localization!["city"]; }
+    }
+
+    public string? Country
+    {
+        get { return Localization!["country"]; }
+    }
+
+    public void SaveLocalization(double latitude, double longitude, string city, string country)
+    {
+        _cookiesHandler.AppendCookie(_httpContext, "latitude", latitude.ToString(CultureInfo.InvariantCulture),
+                new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
+
+        _cookiesHandler.AppendCookie(_httpContext, "longitude", longitude.ToString(CultureInfo.InvariantCulture),
+            new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
+
+        _cookiesHandler.AppendCookie(_httpContext, "city", city,
+            new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
+
+        _cookiesHandler.AppendCookie(_httpContext, "country", country,
+            new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
     }
 }

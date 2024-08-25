@@ -2,22 +2,33 @@
 
 <div class="grid-layout">
     <div class="flex-column-container border container-info-color">
+
+        <div class="titles">
+            <strong>A cada hora </strong>
+            -
+            <span>@Html.DisplayFor(Model => Model.CityCountry)</span>
+        </div>
+
         @{
             for (var i = 0; i < Model.Time.Count(); i++)
             {
                 var hour = Model.Time[i].ToString("t");
 
-                var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i])}";
+                var dayNightCode = (Model.Time[i].Hour >= 5 && Model.Time[i].Hour < 18) ? 1 : 0;
+                var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i], dayNightCode)}";
 
                 <details>
                     <summary>
                         <h4>@hour</h4>
                         <h5>@Html.DisplayFor(Model => Model.Temperature2m[i])°</h5>
                         <img src=@image alt="condition-icon">
-                        <span>@Html.DisplayFor(Model => Model.PrecipitationProbability[i])%</span>
+                        <span>
+                            <img src="./images/WaterDrop.svg" alt="" />
+                            @Html.DisplayFor(Model => Model.PrecipitationProbability[i])%
+                        </span>
                     </summary>
 
-                    <div class="grid-layout">
+                    <div class="details-container">
                         <div class="flex-row-container weather-list-item">
                             <span class="weather-list-properties">Umidade</span>
                             <span>@Html.DisplayFor(Model => Model.RelativeHumidity2m[i])%</span>

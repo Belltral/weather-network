@@ -2,6 +2,7 @@
 
 public class CurrentWeatherViewModel
 {
+    public string? CityCountry { get; set; }
     public string? Time { get; set; }
     public int Interval { get; set; }
     public string? Temperature2m { get; set; } //

@@ -1,6 +1,6 @@
 ﻿@model TodayWeatherViewModel
 
-<div class="border flex-column-container container-info-color">
+<div class="container border flex-column-container container-info-color">
     <header>
         <h3>Clima para hoje</h3>
     </header>
@@ -32,8 +32,8 @@
             <div class="flex-row-container weather-list-item">
                 <span class="weather-list-properties">Possibilidade de chuva</span>
                 <span>
-                    @Html.DisplayFor(Model => Model.PrecipitationProbabilityMax)%
-                    /@Html.DisplayFor(Model => Model.PrecipitationSum)mm
+                    @Html.DisplayFor(Model => Model.PrecipitationProbabilityMax)% 
+                    - @Html.DisplayFor(Model => Model.PrecipitationSum)mm
                 </span>
             </div>
 

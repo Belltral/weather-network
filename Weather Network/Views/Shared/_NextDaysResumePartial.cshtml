@@ -1,6 +1,6 @@
 ﻿@model DailyWeatherViewModel
 
-<div class="daily-partial-info-container border container-info-color">
+<div class="container daily-partial-info-container border container-info-color">
     @for (int i = 1; i <= 5; i++)
     {
         var date = Model.Time[i].ToString("dd/MM");

@@ -1,44 +1,216 @@
-<?xml version="1.0"?>
-<svg width="56" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
-
- <g class="layer">
-  <title>Layer 1</title>
-  <g id="svg_28">
-   <g class="am-weather-cloud-3" id="svg_2">
-    <path d="m63.7,33.4c0,-4.6 -3.7,-8.2 -8.2,-8.2c-1,0 -1.9,0.2 -2.8,0.5c-0.3,-3.4 -3.1,-6.2 -6.6,-6.2c-3.7,0 -6.7,3 -6.7,6.7c0,0.8 0.2,1.6 0.4,2.3c-0.3,-0.1 -0.7,-0.1 -1,-0.1c-3.7,0 -6.7,3 -6.7,6.7c0,3.6 2.9,6.6 6.5,6.7l17.2,0c4.4,-0.5 7.9,-4 7.9,-8.4z" fill="#57a0ee" id="svg_3" stroke="#fff" stroke-linejoin="round" stroke-width="1.2" transform="translate(-20 -11)"/>
-   </g>
-   <g class="am-weather-snow-1" id="svg_4">
-    <g fill="none" id="svg_5" stroke="#57a0ee" stroke-linecap="round" transform="translate(3 28)">
-     <line id="svg_6" stroke-width="1.2" transform="translate(0 9)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
-     <line id="svg_7" transform="rotate(45 2.136 2.5)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
-     <line id="svg_8" transform="rotate(90 8.5 2.5)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
-     <line id="svg_9" transform="rotate(135 11.136 2.5)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="56"
+   height="48"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="SnowShowersHeavy.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="5.9883106"
+     inkscape:cx="19.538065"
+     inkscape:cy="23.796361"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <g
+     class="layer"
+     id="g1"
+     transform="matrix(1.4412492,0,0,1.4412492,-11.420061,-8.4956283)">
+    <title
+       id="title1">Layer 1</title>
+    <g
+       id="svg_28">
+      <g
+         class="am-weather-cloud-3"
+         id="svg_2">
+        <path
+           d="m 63.7,33.4 c 0,-4.6 -3.7,-8.2 -8.2,-8.2 -1,0 -1.9,0.2 -2.8,0.5 -0.3,-3.4 -3.1,-6.2 -6.6,-6.2 -3.7,0 -6.7,3 -6.7,6.7 0,0.8 0.2,1.6 0.4,2.3 -0.3,-0.1 -0.7,-0.1 -1,-0.1 -3.7,0 -6.7,3 -6.7,6.7 0,3.6 2.9,6.6 6.5,6.7 h 17.2 c 4.4,-0.5 7.9,-4 7.9,-8.4 z"
+           fill="#57a0ee"
+           id="svg_3"
+           stroke="#ffffff"
+           stroke-linejoin="round"
+           stroke-width="1.2"
+           transform="translate(-20,-11)" />
+      </g>
+      <g
+         class="am-weather-snow-1"
+         id="svg_4">
+        <g
+           fill="none"
+           id="svg_5"
+           stroke="#57a0ee"
+           stroke-linecap="round"
+           transform="translate(3,28)">
+          <line
+             id="svg_6"
+             stroke-width="1.2"
+             transform="translate(0,9)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_7"
+             transform="rotate(45,2.136,2.5)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_8"
+             transform="rotate(90,8.5,2.5)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_9"
+             transform="rotate(135,11.136,2.5)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+        </g>
+      </g>
+      <g
+         class="am-weather-snow-2"
+         id="svg_10">
+        <g
+           fill="none"
+           id="svg_11"
+           stroke="#57a0ee"
+           stroke-linecap="round"
+           transform="translate(11,28)">
+          <line
+             id="svg_12"
+             stroke-width="1.2"
+             transform="translate(0,9)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_13"
+             transform="rotate(45,2.136,2.5)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_14"
+             transform="rotate(90,8.5,2.5)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_15"
+             transform="rotate(135,11.136,2.5)"
+             x1="13"
+             x2="13"
+             y1="-4.5"
+             y2="0.5" />
+        </g>
+      </g>
+      <g
+         class="am-weather-snow-3"
+         id="svg_16">
+        <g
+           fill="none"
+           id="svg_17"
+           stroke="#57a0ee"
+           stroke-linecap="round"
+           transform="translate(20,28)">
+          <line
+             id="svg_18"
+             stroke-width="1.2"
+             transform="translate(0,9)"
+             x1="12.5"
+             x2="12.5"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_19"
+             transform="rotate(45,1.636,2.5)"
+             x1="12.5"
+             x2="12.5"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_20"
+             transform="rotate(90,8,2.5)"
+             x1="12.5"
+             x2="12.5"
+             y1="-4.5"
+             y2="0.5" />
+          <line
+             id="svg_21"
+             transform="rotate(135,10.636,2.5)"
+             x1="12.5"
+             x2="12.5"
+             y1="-4.5"
+             y2="0.5" />
+        </g>
+      </g>
+      <g
+         class="am-weather-snow-3"
+         id="svg_22">
+        <g
+           fill="none"
+           id="svg_23"
+           stroke="#57a0ee"
+           stroke-linecap="round"
+           transform="translate(20,28)">
+          <line
+             id="svg_24"
+             stroke-width="1.2"
+             transform="translate(0,9)"
+             x1="20.049999"
+             x2="20.049999"
+             y1="-4.4299998"
+             y2="0.56999999" />
+          <line
+             id="svg_25"
+             transform="rotate(45,9.186,2.57175)"
+             x1="20.049999"
+             x2="20.049999"
+             y1="-4.4299998"
+             y2="0.56999999" />
+          <line
+             id="svg_26"
+             transform="rotate(90,15.55,2.57175)"
+             x1="20.049999"
+             x2="20.049999"
+             y1="-4.4299998"
+             y2="0.56999999" />
+          <line
+             id="svg_27"
+             transform="rotate(135,18.186,2.57175)"
+             x1="20.049999"
+             x2="20.049999"
+             y1="-4.4299998"
+             y2="0.56999999" />
+        </g>
+      </g>
     </g>
-   </g>
-   <g class="am-weather-snow-2" id="svg_10">
-    <g fill="none" id="svg_11" stroke="#57a0ee" stroke-linecap="round" transform="translate(11 28)">
-     <line id="svg_12" stroke-width="1.2" transform="translate(0 9)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
-     <line id="svg_13" transform="rotate(45 2.136 2.5)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
-     <line id="svg_14" transform="rotate(90 8.5 2.5)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
-     <line id="svg_15" transform="rotate(135 11.136 2.5)" x1="13" x2="13" y1="-4.5" y2="0.5"/>
-    </g>
-   </g>
-   <g class="am-weather-snow-3" id="svg_16">
-    <g fill="none" id="svg_17" stroke="#57a0ee" stroke-linecap="round" transform="translate(20 28)">
-     <line id="svg_18" stroke-width="1.2" transform="translate(0 9)" x1="12.5" x2="12.5" y1="-4.5" y2="0.5"/>
-     <line id="svg_19" transform="rotate(45 1.636 2.5)" x1="12.5" x2="12.5" y1="-4.5" y2="0.5"/>
-     <line id="svg_20" transform="rotate(90 8 2.5)" x1="12.5" x2="12.5" y1="-4.5" y2="0.5"/>
-     <line id="svg_21" transform="rotate(135 10.636 2.5)" x1="12.5" x2="12.5" y1="-4.5" y2="0.5"/>
-    </g>
-   </g>
-   <g class="am-weather-snow-3" id="svg_22">
-    <g fill="none" id="svg_23" stroke="#57a0ee" stroke-linecap="round" transform="translate(20 28)">
-     <line id="svg_24" stroke-width="1.2" transform="translate(0 9)" x1="20.05" x2="20.05" y1="-4.43" y2="0.57"/>
-     <line id="svg_25" transform="rotate(45 9.186 2.57175)" x1="20.05" x2="20.05" y1="-4.43" y2="0.57"/>
-     <line id="svg_26" transform="rotate(90 15.55 2.57175)" x1="20.05" x2="20.05" y1="-4.43" y2="0.57"/>
-     <line id="svg_27" transform="rotate(135 18.186 2.57175)" x1="20.05" x2="20.05" y1="-4.43" y2="0.57"/>
-    </g>
-   </g>
   </g>
- </g>
 </svg>

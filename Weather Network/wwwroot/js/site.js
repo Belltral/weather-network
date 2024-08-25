@@ -23,15 +23,15 @@ searchBar.addEventListener('keyup', function () {
 
 function searchCities(city) {
     $.ajax({
-        //url: 'https://geocoding-api.open-meteo.com/v1/search',
-        url: 'http://127.0.0.1:5500/db.json',
+        url: 'https://geocoding-api.open-meteo.com/v1/search',
+        //url: 'http://127.0.0.1:5500/db.json',
         method: 'GET',
-        // data: {
-        //     name: city, 
-        //     count: 10,
-        //     language: 'en', 
-        //     format: 'json'
-        // },
+         data: {
+             name: city, 
+             count: 10,
+             language: 'en', 
+             format: 'json'
+         },
         datatype: 'aplication/json',
         success: function (data) {
             let { results } = data;
@@ -123,8 +123,6 @@ function selectOption() {
 
         sendCityRequest(cityData);
 
-        console.log(resourcePath);
-
         document.getElementById('cities-box').style.display = 'none';
     })
 }
@@ -135,7 +133,9 @@ function sendCityRequest(cityData) {
         method: 'GET',
         data: {
             latitude: cityData.latitude,
-            longitude: cityData.longitude
+            longitude: cityData.longitude,
+            city: cityData.name,
+            country: cityData.country
         },
         success: function (weatherData) {
             displayWeatherData(cityData, weatherData);
@@ -150,8 +150,7 @@ function displayWeatherData(cityData, weatherData) {
 
     weatherInfo.innerHTML = weatherData;
 
-    cityName.innerHTML = `${cityData.name}, ${cityData.country}`;
-
+    console.log(weatherData);
 }
 
 function sendHourlyRequest(latitude, longitude) {

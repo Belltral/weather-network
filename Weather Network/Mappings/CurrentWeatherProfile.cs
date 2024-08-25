@@ -9,6 +9,8 @@ public class CurrentWeatherProfile : Profile
     public CurrentWeatherProfile()
     {
         CreateMap<CurrentWeather, CurrentWeatherViewModel>()
+            .ForMember(dst => dst.CityCountry, opt => opt.Ignore())
+
             .ForMember(dst => dst.Temperature2m, opt => opt.MapFrom(src => src.Temperature2m.ToString("F0")))
             .ForMember(dst => dst.ApparentTemperature, opt => opt.MapFrom(src => src.ApparentTemperature.ToString("F0")))
             .ForMember(dst => dst.Precipitation, opt => opt.MapFrom(src => src.Precipitation.ToString("F0")))
