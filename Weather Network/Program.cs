@@ -1,4 +1,3 @@
-using WeatherNetwork.Cookies;
 using WeatherNetwork.Mappings;
 using WeatherNetwork.Services;
 using WeatherNetwork.Services.Contracts;

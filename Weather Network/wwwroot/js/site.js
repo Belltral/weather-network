@@ -22,6 +22,9 @@ searchBar.addEventListener('keyup', function () {
 });
 
 function searchCities(city) {
+    const culture = window.navigator.language;
+    const language = culture.substring(0, 2);
+
     $.ajax({
         url: 'https://geocoding-api.open-meteo.com/v1/search',
         //url: 'http://127.0.0.1:5500/db.json',
@@ -29,7 +32,7 @@ function searchCities(city) {
          data: {
              name: city, 
              count: 10,
-             language: 'en', 
+             language: language ? language : pt,
              format: 'json'
          },
         datatype: 'aplication/json',

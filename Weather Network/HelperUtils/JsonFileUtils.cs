@@ -7,6 +7,7 @@ public class JsonFileUtils
 {
     private const string wmoCodesFile = @".\WMOCodes\WMOCodesDescription.json";
     private const string localizationsFile = @".\DefaultLocations.json";
+    private const string imagesPath = @".\wwwroot\images";
 
     public static string? WMOCodeConverter(int wmoCode, string languageCode)
     {
@@ -54,8 +55,6 @@ public class JsonFileUtils
 
     public static string? IconName(int wmoCode, int dayNightCode = 1)
     {
-        string imagesPath = @"D:\Estudos\Front-End\WeatherNetwork\images";
-
         string dayNight = (dayNightCode == 1) ? "Day" : "Night";
         List<int> dayNightVariables = [0, 1, 2, 45];
         string? wmoCondition = ((WMOCode)wmoCode).ToString();

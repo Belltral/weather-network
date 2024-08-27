@@ -35,6 +35,8 @@ namespace WeatherNetwork.Controllers
             todayWeatherVM = MappedWeather(weather, cookies.Language!);
             todayWeatherVM.Current.CityCountry = $"{cookies.City}, {cookies.Country}";
 
+            cookies.SaveWMOCode(todayWeatherVM.Current.WeatherCode);
+
             return View(todayWeatherVM);
         }
 
@@ -51,6 +53,8 @@ namespace WeatherNetwork.Controllers
 
             todayWeatherVM = MappedWeather(weather, cookies.Language!);
             todayWeatherVM.Current.CityCountry = $"{city}, {country}";
+
+            cookies.SaveWMOCode(todayWeatherVM.Current.WeatherCode);
 
             return PartialView("_FullTodayInformationPartial", todayWeatherVM);
         }

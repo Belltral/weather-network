@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Localization;
+using WeatherNetwork.Cookies;
 using WeatherNetwork.HelperUtils;
 using WeatherNetwork.Services.Contracts;
 
@@ -6,20 +7,21 @@ namespace WeatherNetwork.Services;
 
 public class CookiesHandlerService : ICookiesHandlerService
 {
-    public void AppendCookie(HttpContext httpContext, string key, string value, CookieOptions? cookieOptions, bool overwrite = true)
+    public void AppendCookie(HttpContext httpContext, Cookie cookie, bool overwrite = true)
     {
-        var findCookie = httpContext.Request.Cookies[key];
+        var findCookie = httpContext.Request.Cookies[cookie.Key!];
 
         if (!String.IsNullOrEmpty(findCookie) && !overwrite)
             return;
 
-        if (cookieOptions is null)
+        if (cookie.Options is null)
         {
-            httpContext.Response.Cookies.Append(key, value);
+            httpContext.Response.Cookies.Append(cookie.Key!, cookie.Value!);
             return;
         }
 
-        httpContext.Response.Cookies.Append(key, value, cookieOptions);
+        httpContext.Response.Cookies.Append(cookie.Key!, cookie.Value!, cookie.Options);
+
     }
 
     public string? CultureRequest(HttpContext httpContext)
@@ -59,7 +61,7 @@ public class CookiesHandlerService : ICookiesHandlerService
 
             foreach (var name in cookiesName)
             {
-                httpContext.Response.Cookies.Append(name, defaultCoordinates![name], new CookieOptions { Expires = DateTime.Now.AddDays(15)});
+                httpContext.Response.Cookies.Append(name, defaultCoordinates![name], new CookieOptions { Expires = DateTime.Now.AddDays(15) });
                 coordinates.Add(name, defaultCoordinates![name]);
             }
 

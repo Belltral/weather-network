@@ -1,4 +1,7 @@
-﻿using System.Globalization;
+﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
+using System.Globalization;
 using WeatherNetwork.Services.Contracts;
 
 namespace WeatherNetwork.Cookies;
@@ -55,16 +58,40 @@ public class NecessaryCookies
 
     public void SaveLocalization(double latitude, double longitude, string city, string country)
     {
-        _cookiesHandler.AppendCookie(_httpContext, "latitude", latitude.ToString(CultureInfo.InvariantCulture),
-                new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
+        _cookiesHandler.AppendCookie(_httpContext, new Cookie
+        {
+            Key = "latitude",
+            Value = latitude.ToString(CultureInfo.InvariantCulture),
+            Options = new CookieOptions { Expires = DateTime.Now.AddDays(15) }
+        },
+        true);
 
-        _cookiesHandler.AppendCookie(_httpContext, "longitude", longitude.ToString(CultureInfo.InvariantCulture),
-            new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
+        _cookiesHandler.AppendCookie(_httpContext, new Cookie {
+            Key = "longitude",
+            Value = longitude.ToString(CultureInfo.InvariantCulture),
+            Options = new CookieOptions { Expires = DateTime.Now.AddDays(15) }
+        },
+        true);
 
-        _cookiesHandler.AppendCookie(_httpContext, "city", city,
-            new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
+        _cookiesHandler.AppendCookie(_httpContext, new Cookie
+        {
+            Key = "city",
+            Value = city,
+            Options = new CookieOptions { Expires = DateTime.Now.AddDays(15) }
+        },
+        true);
 
-        _cookiesHandler.AppendCookie(_httpContext, "country", country,
-            new CookieOptions { Expires = DateTime.Now.AddDays(15) }, true);
+        _cookiesHandler.AppendCookie(_httpContext, new Cookie
+            {
+            Key = "country",
+            Value = country,
+            Options = new CookieOptions { Expires = DateTime.Now.AddDays(15) }
+            }, 
+            true);
+    }
+
+    public void SaveWMOCode(int wmoCode)
+    {
+        _cookiesHandler.AppendCookie(_httpContext, new Cookie("WMO-Code", wmoCode.ToString(), null), true);
     }
 }
