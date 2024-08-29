@@ -5,9 +5,32 @@ namespace WeatherNetwork.HelperUtils;
 
 public class JsonFileUtils
 {
+    private static readonly Dictionary<string, Func<int, string?>> aqiFunctions = new()
+        {
+            {"Good",
+                (aqiValue) => (aqiValue >= 0 && aqiValue <= 50) ? "Good" : null
+            },
+            {"Moderade",
+                (aqiValue) => (aqiValue >= 51 && aqiValue <= 100) ? "Moderade" : null
+            },
+            {"UnhealthySentitives",
+                (aqiValue) => (aqiValue >= 101 && aqiValue <= 150) ? "UnhealthySentitives" : null
+            },
+            {"Unhealthy",
+                (aqiValue) => (aqiValue >= 151 && aqiValue <= 200) ? "Unhealthy" : null
+            },
+            {"VeryUnhealthy",
+                (aqiValue) => (aqiValue >= 201 && aqiValue <= 300) ? "VeryUnhealthy" : null
+            },
+            {"Hazardous",
+                (aqiValue) => (aqiValue >= 301) ? "Hazardous" : null
+            },
+        };
+
     private const string wmoCodesFile = @".\WMOCodes\WMOCodesDescription.json";
     private const string localizationsFile = @".\DefaultLocations.json";
     private const string imagesPath = @".\wwwroot\images";
+    private const string aqiFile = @".\AQI.json";
 
     public static string? WMOCodeConverter(int wmoCode, string languageCode)
     {
@@ -82,5 +105,28 @@ public class JsonFileUtils
         JsonElement icon = condition.GetProperty("icon");
 
         return $"{icon}.svg";
+    }
+
+    public static string? AQICondition(int aqiValue, string languageCode)
+    {
+        foreach (var aqi in aqiFunctions)
+        {
+            var index = aqi.Value(aqiValue);
+            if (index is not null)
+            {
+                using StreamReader streamReader = new(aqiFile);
+                using JsonDocument document = JsonDocument.Parse(streamReader.ReadToEnd());
+
+                JsonElement root = document.RootElement;
+                JsonElement condition = root.GetProperty(index);
+
+                bool descriptionExists = condition.TryGetProperty(languageCode, out JsonElement description);
+
+                if (descriptionExists)
+                    return description.ToString();
+            }
+        }
+
+        return null;
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model CurrentWeatherViewModel
 
 @{
-    var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode, Model.IsDay)}";
+    var conditionIcon = $"images/{JsonFileUtils.IconName(Model.WeatherCode, Model.IsDay)}";
 }
 
 <div id="current-weather" class="container flex-column-container border">
@@ -16,7 +16,7 @@
             <span title="Apparent Temperature">Sensação térmica @Html.DisplayFor(Model => Model.ApparentTemperature)°</span>
         </div>
         <div class="centralize">
-            <img src=@image alt="condition-icon" width="120" height="100">
+            <img src=@conditionIcon alt="condition-icon" width="120" height="100">
         </div>
     </div>
 

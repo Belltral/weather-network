@@ -5,6 +5,7 @@ public class TodayWeatherViewModel
     public CurrentWeatherViewModel? Current { get; set; }
     public HourlyWeatherViewModel? Hourly { get; set; }
     public DailyWeatherViewModel? Daily { get; set; }
+    public CurrentAirQualityIndexViewModel? CurrentAirQualityIndex { get; set; }
 
     public string? Time { get; set; }
     public int WeatherCode { get; set; }

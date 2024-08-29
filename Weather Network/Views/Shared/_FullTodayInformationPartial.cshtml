@@ -1,6 +1,0 @@
-﻿@model TodayWeatherViewModel
-
-@await Html.PartialAsync("_CurrentWeatherPartial", Model.Current)
-@await Html.PartialAsync("_TodayInformationPartial", Model)
-@await Html.PartialAsync("_NextHoursResumePartial", Model.Hourly)
-@await Html.PartialAsync("_NextDaysResumePartial", Model.Daily)

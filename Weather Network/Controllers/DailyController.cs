@@ -54,7 +54,7 @@ namespace WeatherNetwork.Controllers
             dailyWeatherVM.WeatherCondition = dailyWeather.WeatherCode!.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
             dailyWeatherVM.CityCountry = $"{city}, {country}";
 
-            return PartialView("_DailyWeatherPartial", dailyWeatherVM);
+            return PartialView("~/Views/Shared/Partials/DailyPartials/_DailyWeatherPartial.cshtml", dailyWeatherVM);
         }
     }
 }

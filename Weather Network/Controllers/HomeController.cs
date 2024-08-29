@@ -12,15 +12,18 @@ namespace WeatherNetwork.Controllers
     public class HomeController : Controller
     {
         private readonly IWeatherService _weatherService;
+        private readonly IAirQualityIndexService _airQualityIndexService;
         private readonly IMapper _mapper;
         private readonly ICookiesHandlerService _cookiesHandler;
         private TodayWeatherViewModel todayWeatherVM;
 
-        public HomeController(IWeatherService weatherService, IMapper mapper, ICookiesHandlerService cookiesHandler)
+        public HomeController(IWeatherService weatherService, IMapper mapper, ICookiesHandlerService cookiesHandler, 
+            IAirQualityIndexService airQualityIndexService)
         {
             _weatherService = weatherService;
             _mapper = mapper;
             _cookiesHandler = cookiesHandler;
+            _airQualityIndexService = airQualityIndexService;
         }
 
         public async Task<ActionResult> Index()
@@ -32,7 +35,9 @@ namespace WeatherNetwork.Controllers
             if (weather is null)
                 return View("Error");
 
-            todayWeatherVM = MappedWeather(weather, cookies.Language!);
+            var aqi = await _airQualityIndexService.GetAirQualityIndex(cookies.Latitude, cookies.Longitude);
+
+            todayWeatherVM = MappedWeather(weather, aqi, cookies.Language!);
             todayWeatherVM.Current.CityCountry = $"{cookies.City}, {cookies.Country}";
 
             cookies.SaveWMOCode(todayWeatherVM.Current.WeatherCode);
@@ -51,12 +56,14 @@ namespace WeatherNetwork.Controllers
             if (weather is null)
                 return View("Error");
 
-            todayWeatherVM = MappedWeather(weather, cookies.Language!);
+            var aqi = await _airQualityIndexService.GetAirQualityIndex(latitude, longitude);
+
+            todayWeatherVM = MappedWeather(weather, aqi, cookies.Language!);
             todayWeatherVM.Current.CityCountry = $"{city}, {country}";
 
             cookies.SaveWMOCode(todayWeatherVM.Current.WeatherCode);
 
-            return PartialView("_FullTodayInformationPartial", todayWeatherVM);
+            return PartialView("~/Views/Shared/Partials/_FullTodayInformationPartial.cshtml", todayWeatherVM);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -66,15 +73,15 @@ namespace WeatherNetwork.Controllers
         }
 
         // Auxliar methods
-        private TodayWeatherViewModel MappedWeather(Weather? weather, string culture)
+        private TodayWeatherViewModel MappedWeather(Weather? weather, AirQualityIndex airQualityIndex, string languageCode)
         {
             TodayWeatherViewModel todayWeatherVM = new TodayWeatherViewModel();
 
-            var currentWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Current.WeatherCode, culture);
-            var dayWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Daily.WeatherCode[0], culture);
+            var currentWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Current.WeatherCode, languageCode);
+            var dayWeatherCode = JsonFileUtils.WMOCodeConverter(weather.Daily.WeatherCode[0], languageCode);
 
-            var hourlyWeatherCode = weather.Hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, culture)).ToList();
-            var dailyWeatherCode = weather.Daily.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, culture)).ToList();
+            var hourlyWeatherCode = weather.Hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, languageCode)).ToList();
+            var dailyWeatherCode = weather.Daily.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, languageCode)).ToList();
 
             todayWeatherVM = _mapper.Map<TodayWeatherViewModel>(weather.Daily);
             todayWeatherVM.WeatherCondition = dayWeatherCode;
@@ -87,6 +94,10 @@ namespace WeatherNetwork.Controllers
 
             todayWeatherVM.Daily = _mapper.Map<DailyWeatherViewModel>(weather.Daily);
             todayWeatherVM.Daily.WeatherCondition = dailyWeatherCode!;
+
+            todayWeatherVM.CurrentAirQualityIndex = _mapper.Map<CurrentAirQualityIndexViewModel>(airQualityIndex.Current);
+            var conditionValue = todayWeatherVM.CurrentAirQualityIndex.UsAqi;
+            todayWeatherVM.CurrentAirQualityIndex.Condition = JsonFileUtils.AQICondition(conditionValue, languageCode);
 
             return todayWeatherVM;
         }

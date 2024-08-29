@@ -4,6 +4,4 @@
     ViewData["Title"] = "Daily";
 }
 
-<div id="daily-weather" class="flex-column-container">
-    @await Html.PartialAsync("_DailyWeatherPartial", Model)
-</div>
+@await Html.PartialAsync("~/Views/Shared/Partials/DailyPartials/_DailyWeatherPartial.cshtml", Model)

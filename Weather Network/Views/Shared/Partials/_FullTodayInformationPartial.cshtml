@@ -1,0 +1,11 @@
+﻿@model TodayWeatherViewModel
+
+<div id="today-info">
+    @await Html.PartialAsync("HomePartials/_CurrentWeatherPartial.cshtml", Model.Current)
+    @await Html.PartialAsync("HomePartials/_TodayInformationPartial.cshtml", Model)
+    @await Html.PartialAsync("HomePartials/_NextHoursResumePartial.cshtml", Model.Hourly)
+    @await Html.PartialAsync("HomePartials/_NextDaysResumePartial.cshtml", Model.Daily)
+</div>
+<div>
+    @await Html.PartialAsync("~/Views/Shared/Partials/HomePartials/_AirQualityIndexPartial.cshtml", Model)
+</div>

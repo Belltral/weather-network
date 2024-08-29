@@ -13,6 +13,7 @@ public class TodayWeatherProfile : Profile
             .ForMember(dst => dst.Current, opt => opt.Ignore())
             .ForMember(dst => dst.Hourly, opt => opt.Ignore())
             .ForMember(dst => dst.Daily, opt => opt.Ignore())
+            .ForMember(dst => dst.CurrentAirQualityIndex, opt => opt.Ignore())
 
             .ForMember(dst => dst.WeatherCode, opt => opt.MapFrom(src => src.WeatherCode.FirstOrDefault()))
 

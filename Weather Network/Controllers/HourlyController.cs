@@ -55,6 +55,6 @@ public class HourlyController : Controller
         hourlyWeatherVM.WeatherCondition = hourly.WeatherCode.Select(code => JsonFileUtils.WMOCodeConverter(code, cookies.Language!)).ToList()!;
         hourlyWeatherVM.CityCountry = $"{city}, {country}";
 
-        return PartialView("_HourlyWeatherPartial", hourlyWeatherVM);
+        return PartialView("~/Views/Shared/Partials/HourlyPartials/_HourlyWeatherPartial.cshtml", hourlyWeatherVM);
     }
 }

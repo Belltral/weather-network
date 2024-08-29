@@ -4,6 +4,5 @@
     ViewData["Title"] = "Home";
 }
 
-<div id="today-info">
-    @await Html.PartialAsync("_FullTodayInformationPartial", Model)
-</div>
+
+@await Html.PartialAsync("~/Views/Shared/Partials/_FullTodayInformationPartial.cshtml", Model)

@@ -1,7 +1,6 @@
 ﻿@model HourlyWeatherViewModel
-
-<div class="grid-layout">
-    <div class="flex-column-container border container-info-color">
+<div id="hourly-weather" class="flex-column-container">
+    <div class="hourly-container container flex-column-container border container-info-color">
 
         <div class="titles">
             <strong>A cada hora </strong>
@@ -15,13 +14,13 @@
                 var hour = Model.Time[i].ToString("t");
 
                 var dayNightCode = (Model.Time[i].Hour >= 5 && Model.Time[i].Hour < 18) ? 1 : 0;
-                var image = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i], dayNightCode)}";
+                var conditionIcon = $"images/{JsonFileUtils.IconName(Model.WeatherCode[i], dayNightCode)}";
 
                 <details>
                     <summary>
                         <h4>@hour</h4>
                         <h5>@Html.DisplayFor(Model => Model.Temperature2m[i])°</h5>
-                        <img src=@image alt="condition-icon">
+                        <img src=@conditionIcon alt="condition-icon">
                         <span>
                             <img src="./images/WaterDrop.svg" alt="" />
                             @Html.DisplayFor(Model => Model.PrecipitationProbability[i])%

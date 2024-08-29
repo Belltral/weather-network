@@ -3,8 +3,6 @@
 
 // Write your JavaScript code.
 
-let resourcePath = window.location.pathname;
-
 let timeout = null;
 
 const searchBar = document.getElementById('search-bar');
@@ -97,6 +95,9 @@ document.addEventListener('click', function (event) {
 });
 
 function selectOption() {
+    let resourcePath = window.location.pathname;
+    console.log(resourcePath);
+
     let citiesList = document.getElementById('cities-list');
     citiesList.addEventListener('click', (event) => {
         const cityData = {
@@ -106,23 +107,25 @@ function selectOption() {
             longitude: event.target.getAttribute('longitude')
         }
 
-        //switch (resourcePath) {
-        //    case '/':
-        //        sendCityRequest(cityData);
-        //        break;
+        switch (resourcePath) {
+            case '/':
+                sendCityRequest(cityData);
+                break;
 
-        //    case '/home.html':
-        //        sendCityRequest(cityData);
-        //        break;
+            case '/Hourly':
+                sendHourlyRequest(cityData)
+                break;
+            case '/ByHourly':
+                sendHourlyRequest(cityData)
+                break;
 
-        //    case '/hourly.html':
-        //        sendHourlyRequest(cityData.latitude, cityData.longitude)
-        //        break;
-
-        //    case '/daily.html':
-
-        //        break;
-        //}
+            case '/Daily':
+                sendDailyRequest(cityData)
+                break;
+            case '/ByDaily':
+                sendDailyRequest(cityData)
+                break;
+        }
 
         sendCityRequest(cityData);
 
@@ -147,21 +150,26 @@ function sendCityRequest(cityData) {
 }
 
 function displayWeatherData(cityData, weatherData) {
-    const weatherInfo = document.getElementById('weather-info');
-    const current = weatherInfo.children[0];
+    // const weatherInfo = document.getElementById('weather-info');
+    const mainContent = document.getElementById('main-content');
+    const current = document.getElementById('current-weather');
     const cityName = current.children[0];
 
-    weatherInfo.innerHTML = weatherData;
+    mainContent.innerHTML = '';
+    mainContent.innerHTML = weatherData;
 
-    console.log(weatherData);
+    setCurrentWeatherBackground()
+    setAiqColor()
 }
 
-function sendHourlyRequest(latitude, longitude) {
+function sendHourlyRequest(cityData) {
     $.ajax({
         url: 'https://localhost:7152/Hourly',
         data: {
-            latitude: latitude,
-            longitude: longitude
+            latitude: cityData.latitude,
+            longitude: cityData.longitude,
+            city: cityData.name,
+            country: cityData.country
         },
         success: function (hourlyData) {
             displayHourlyData(hourlyData);
@@ -170,17 +178,19 @@ function sendHourlyRequest(latitude, longitude) {
 }
 
 function displayHourlyData(hourlyData) {
-    const weatherInfo = document.getElementById('weather-info');
-    weatherInfo.innerHTML = '';
-    weatherInfo.innerHTML = hourlyData;
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = '';
+    mainContent.innerHTML = hourlyData;
 }
 
-function sendDailyRequest(latitude, longitude) {
+function sendDailyRequest(cityData) {
     $.ajax({
         url: 'https://localhost:7152/Daily',
         data: {
-            latitude: latitude,
-            longitude: longitude
+            latitude: cityData.latitude,
+            longitude: cityData.longitude,
+            city: cityData.name,
+            country: cityData.country
         },
         success: function (dailyData) {
             displayDailyData(dailyData);
@@ -189,7 +199,98 @@ function sendDailyRequest(latitude, longitude) {
 }
 
 function displayDailyData(dailyData) {
-    const weatherInfo = document.getElementById('weather-info');
-    weatherInfo.innerHTML = '';
-    weatherInfo.innerHTML = dailyData;
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = '';
+    mainContent.innerHTML = dailyData;
+}
+
+let actualBodyClass = '';
+function setCurrentWeatherBackground() {
+    const wmoCode = getCookie('WMO-Code');
+    const { codes } = wmo;
+
+    const code = codes[wmoCode];
+    const { bodyStyle } = code;
+    const { classToAdd } = code;
+    const { url } = code;
+
+    const body = document.body;
+    const currentWeather = document.getElementById('current-weather');
+
+    if (actualBodyClass !== '') {
+        body.classList.remove(actualBodyClass);
+        actualBodyClass = '';
+    }
+
+    body.classList.add(bodyStyle);
+    actualBodyClass = bodyStyle;
+
+    if (currentWeather) {
+        currentWeather.style.backgroundImage = `url(${url})`;
+        if (classToAdd)
+            currentWeather.classList.add(classToAdd);
+    }
+}
+
+setCurrentWeatherBackground()
+
+function getCookie(cookieName) {
+    const cookieDecoded = decodeURIComponent(document.cookie);
+    const regex = new RegExp(`${cookieName}=([^;]+)`);
+    const cookie = cookieDecoded.match(regex);
+
+    if (cookie)
+        return cookie[1];
+}
+
+function setAiqColor() {
+    const aiqInfos = document.getElementsByClassName('aiq-infos')[0];
+    const aiqValue = aiqInfos.children[2];
+
+    const color = getAQIColor(aiqValue.innerHTML);
+    aiqValue.style.backgroundColor = color;
+}
+
+setAiqColor()
+
+function getAQICondition(AqiValue) {
+    const ranges = {
+        '0-50': 'good',
+        '51-100': 'moderate',
+        '101-150': 'unhealthySensitive',
+        '151-200': 'unhealthy',
+        '201-300': 'veryUnhealthy',
+        '301-500': 'hazardous',
+    }
+
+    const rangesValues = ['0-50', '51-100', '101-150', '151-200', '201-300', '301-500']
+
+    let condition;
+
+    for (let index = 0; index < rangesValues.length; index++) {
+        const element = rangesValues[index];
+        const splited = element.split('-');
+        const min = +splited[0];
+        const max = +splited[1];
+
+        if (parseInt(AqiValue) >= min && AqiValue !== max && parseInt(AqiValue) <= max) {
+            condition = ranges[element]
+            return condition;
+        }
+    }
+}
+
+function getAQIColor(AqiValue) {
+    const conditions = {
+        good: '#50ccaa',
+        moderate: '#f0e641',
+        unhealthySensitive: '#f0a741',
+        unhealthy: '#ff5050',
+        veryUnhealthy: '#960032',
+        hazardous: '#7d2181'
+    }
+
+    const condition = getAQICondition(AqiValue);
+
+    return conditions[condition];
 }

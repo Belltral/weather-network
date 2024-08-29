@@ -12,6 +12,11 @@ builder.Services.AddHttpClient("WeatherApi", opt =>
     opt.BaseAddress = new Uri(builder.Configuration["ServiceUri:WeatherUri"]!);
 });
 
+builder.Services.AddHttpClient("AQIApi", opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration["ServiceUri:AirQualityIndexUri"]!);
+});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(
@@ -33,6 +38,7 @@ builder.Services.AddScoped<IWeatherService, WeatherService>();
 builder.Services.AddScoped<IDailyWeatherService, DailyWeatherService>();
 builder.Services.AddScoped<IHourlyWeatherService, HourlyWeatherService>();
 builder.Services.AddScoped<ICookiesHandlerService, CookiesHandlerService>();
+builder.Services.AddScoped<IAirQualityIndexService, AirQualityIndexService>();
 
 builder.Services.Configure<RequestLocalizationOptions>(opt =>
 {
@@ -46,7 +52,8 @@ builder.Services.Configure<RequestLocalizationOptions>(opt =>
 builder.Services.AddAutoMapper(typeof(CurrentWeatherProfile),
     typeof(HourlyProfile),
     typeof(DailyProfile),
-    typeof(TodayWeatherProfile)
+    typeof(TodayWeatherProfile),
+    typeof(CurrentAirQualityIndexProfile)
     );
 
 var app = builder.Build();

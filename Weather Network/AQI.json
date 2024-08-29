@@ -1,0 +1,20 @@
+{
+    "Good" : {
+        "pt": "Boa"
+    },
+    "Moderade" : {
+        "pt": "Regular"
+    },
+    "UnhealthySentitives" : {
+        "pt": "Inadequada"
+    },
+    "Unhealthy" : {
+        "pt": "Ruim"
+    },
+    "VeryUnhealthy" : {
+        "pt": "Muito ruim"
+    },
+    "Hazardous" : {
+        "pt": "Crítica"
+    }
+}

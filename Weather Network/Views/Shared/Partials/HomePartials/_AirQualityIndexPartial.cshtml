@@ -1,0 +1,45 @@
+﻿@model TodayWeatherViewModel
+
+@{
+    var currentWeather = Model.Current;
+    var currentAirQualityIndex = Model.CurrentAirQualityIndex;
+}
+
+<div id="air-quality" class="container flex-column-container border container-info-color">
+    <div class="aiq-infos">
+        <span>Índice de qualidade atual do ar</span>
+        <h4>@currentWeather.CityCountry</h4>
+        <h1>@currentAirQualityIndex.UsAqi</h1>
+        <h3>@currentAirQualityIndex.Condition</h3>
+    </div>
+    <div class="border grid-layout aiq-pollutants">
+        <div class="weather-list-item flex-row-container">
+            <span>PM₁₀</span>
+            <span>@currentAirQualityIndex.Pm10 μg/m³</span>
+        </div>
+        <div class="weather-list-item flex-row-container">
+            <span>NO₂</span>
+            <span>@currentAirQualityIndex.NitrogenDioxide μg/m³</span>
+        </div>
+        <div class="weather-list-item flex-row-container">
+            <span>PM₂.₅</span>
+            <span>@currentAirQualityIndex.Pm25 μg/m³</span>
+        </div>
+        <div class="weather-list-item flex-row-container">
+            <span>CO</span>
+            <span>@currentAirQualityIndex.CarbonMonoxide μg/m³</span>
+        </div>
+        <div class="weather-list-item flex-row-container">
+            <span>SO₂</span>
+            <span>@currentAirQualityIndex.SulphurDioxide μg/m³</span>
+        </div>
+        <div class="weather-list-item flex-row-container">
+            <span>O₃</span>
+            <span>@currentAirQualityIndex.Ozone μg/m³</span>
+        </div>
+    </div>
+    <small>
+        Índices:
+        <a href="https://www.airnow.gov/aqi/aqi-basics/">U.S. Air Quality Index</a>
+    </small>
+</div>
